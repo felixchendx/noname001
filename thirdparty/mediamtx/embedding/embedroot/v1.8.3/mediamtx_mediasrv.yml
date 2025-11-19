@@ -1,0 +1,223 @@
+###############################################
+# Global settings -> General
+
+logLevel: info # warn
+logDestinations: [stdout] # use stdout, caller needs to manage the logging routines
+logFile: mediamtx.log     # ignore this
+
+readTimeout: 10s
+writeTimeout: 10s
+writeQueueSize: 1024
+udpMaxPayloadSize: 1472
+
+runOnConnect:
+runOnConnectRestart: no
+runOnDisconnect:
+
+###############################################
+# Global settings -> Authentication
+
+authMethod: internal
+authInternalUsers:
+# - user: any # remove this rule on production
+#   pass:
+#   ips: []
+#   permissions:
+#   - action: publish
+#     path:
+#   - action: read
+#     path:
+#   - action: playback
+#     path:
+
+  # Default administrator.
+  # This allows to use API, metrics and PPROF without authentication,
+  # if the IP is localhost.
+- user: any
+  pass:
+  ips: ['127.0.0.1', '::1']
+  permissions:
+  - action: publish
+  - action: read
+  - action: playback
+  - action: api
+  - action: metrics
+  - action: pprof
+
+- user: relay001
+  pass: really001
+  ips: []
+  permissions:
+  - action: read
+    path:
+  - action: playback
+    path:
+
+- user: viewer001
+  pass: biwer001
+  ips: []
+  permissions:
+  - action: read
+    path:
+  - action: playback
+    path:
+
+authHTTPAddress:
+authHTTPExclude:
+- action: api
+- action: metrics
+- action: pprof
+
+authJWTJWKS:
+
+###############################################
+# Global settings -> Control API
+
+api: yes
+apiAddress: :9997
+apiEncryption: no
+apiServerKey: server.key
+apiServerCert: server.crt
+apiAllowOrigin: '*'
+apiTrustedProxies: []
+
+
+###############################################
+# Global settings -> Metrics
+
+
+###############################################
+# Global settings -> PPROF
+
+
+###############################################
+# Global settings -> Playback server
+
+
+###############################################
+# Global settings -> RTSP server
+
+rtsp: yes
+protocols: [tcp]
+encryption: "no"
+rtspAddress: :8554
+rtspAuthMethods: [basic]
+
+###############################################
+# Global settings -> RTMP server
+
+rtmp: no
+
+###############################################
+# Global settings -> HLS server
+
+hls: yes
+hlsAddress: :8888
+hlsEncryption: no
+hlsServerKey: server.key
+hlsServerCert: server.crt
+hlsAllowOrigin: '*'
+hlsTrustedProxies: []
+hlsAlwaysRemux: yes
+hlsVariant: lowLatency
+hlsSegmentCount: 7
+hlsSegmentDuration: 1s
+hlsPartDuration: 1000ms
+hlsSegmentMaxSize: 50M
+hlsDirectory: '' # only keep in RAM, this is for preview purposes
+hlsMuxerCloseAfter: 60s
+
+###############################################
+# Global settings -> WebRTC server
+
+webrtc: no
+
+###############################################
+# Global settings -> SRT server
+
+srt: no
+
+###############################################
+# Default path settings
+
+pathDefaults:
+
+  ###############################################
+  # Default path settings -> General
+
+  source: publisher
+  sourceFingerprint:
+  sourceOnDemand: no
+  sourceOnDemandStartTimeout: 10s
+  sourceOnDemandCloseAfter: 10s
+  # Maximum number of readers. Zero means no limit.
+  maxReaders: 0
+  srtReadPassphrase:
+  fallback:
+
+  ###############################################
+  # Default path settings -> Record
+
+  record: no
+
+  ###############################################
+  # Default path settings -> Publisher source (when source is "publisher")
+
+  overridePublisher: no
+  srtPublishPassphrase:
+
+  ###############################################
+  # Default path settings -> RTSP source (when source is a RTSP or a RTSPS URL)
+
+  rtspTransport: tcp
+  rtspAnyPort: no
+  # Range header to send to the source, in order to start streaming from the specified offset.
+  # available values:
+  # * clock: Absolute time
+  # * npt: Normal Play Time
+  # * smpte: SMPTE timestamps relative to the start of the recording
+  rtspRangeType:
+  # Available values:
+  # * clock: UTC ISO 8601 combined date and time string, e.g. 20230812T120000Z
+  # * npt: duration such as "300ms", "1.5m" or "2h45m", valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+  # * smpte: duration such as "300ms", "1.5m" or "2h45m", valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+  rtspRangeStart:
+
+  ###############################################
+  # Default path settings -> Redirect source (when source is "redirect")
+
+  sourceRedirect:
+
+  ###############################################
+  # Default path settings -> Raspberry Pi Camera source (when source is "rpiCamera")
+
+
+  ###############################################
+  # Default path settings -> Hooks
+
+  runOnInit:
+  runOnInitRestart: no
+
+  runOnDemand:
+  runOnDemandRestart: no
+  runOnDemandStartTimeout: 10s
+  runOnDemandCloseAfter: 10s
+  runOnUnDemand:
+
+  runOnReady:
+  runOnReadyRestart: no
+  runOnNotReady:
+
+  runOnRead:
+  runOnReadRestart: no
+  runOnUnread:
+
+  runOnRecordSegmentCreate:
+
+  runOnRecordSegmentComplete:
+
+###############################################
+# Path settings
+
+paths:
+  all_others:
