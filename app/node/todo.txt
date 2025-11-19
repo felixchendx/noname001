@@ -1,0 +1,4 @@
+// TODO: 
+// - move to comm related app base package
+// - mutex for concurrency
+// - base zmq implementeation
