@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{{ $.title }}</title>
+    <meta name="description" content="">
+
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" type="image/gif">
+
+    <link href="/assets/tabler/tabler.min.css" rel="stylesheet">
+
+    <link href="/assets/internal/main.css?cbv={{ $.cacheBusterVar }}" rel="stylesheet">
+    {{ range $idx, $item := $.extraCssLinks }}
+    <link href="{{ $item }}?cbv={{ $.cacheBusterVar }}" rel="stylesheet">
+    {{ end }}
+  </head>
+
+  <body class="layout-fluid" data-bs-theme="{{ $.theme }}">
+    <div class="page">
+      {{ if $.renderSidenav }}
+      {{ template "d-sidenav.html.tmpl" $.sidenavData }}
+      {{ end }}
+
+      {{ if $.renderTopnav }}
+      {{ template "d-topnav.html.tmpl" $.topnavData }}
+      {{ end }}
+      
+      {{ if $.messages }}
+      <div class="page-wrapper message-wrapper">
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row align-items-center m-0">
+              {{ range $idx, $item := $.messages.Notices }}
+              <div class="alert alert-success m-0 p-2">
+                <h4 class="alert-title mb-0">Notice</h4>
+                <div class="text-secondary">{{ $item }}</div>
+              </div>
+              {{ end }}
+              {{ range $idx, $item := $.messages.Warnings }}
+              <div class="alert alert-warning m-0 p-2">
+                <h4 class="alert-title mb-0">Warning</h4>
+                <div class="text-secondary">{{ $item }}</div>
+              </div>
+              {{ end }}
+              {{ range $idx, $item := $.messages.Errors }}
+              <div class="alert alert-danger m-0 p-2">
+                <h4 class="alert-title mb-0">Error</h4>
+                <div class="text-secondary">{{ $item }}</div>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+
+      {{ $.contentHTML }}
+
+      {{ if $.renderFooter }}
+      <div class="page-wrapper">
+        <div class="footer d-print-none fu-footer-slim">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Copyright © 2025
+                    <a href="#" class="link-secondary">Fulabs Technologies</a>. All rights reserved.
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-secondary" rel="noopener"> {{ $.appVersion }} </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <script src="/assets/tabler/tabler.min.js" defer=""></script>
+    <script src="/assets/rxjs/7.8.2/rxjs.umd.min.js" defer=""></script>
+    <script src="/assets/luxon/luxon.min.js" defer=""></script>
+
+    <script src="/assets/internal/main.js?cbv={{ $.cacheBusterVar }}" defer=""></script>
+    <script src="/assets/internal/comm.js?cbv={{ $.cacheBusterVar }}" defer=""></script>
+    {{ range $idx, $item := $.extraJsLinks }}
+    <script src="{{ $item }}?cbv={{ $.cacheBusterVar }}" defer=""></script>
+    {{ end }}
+  </body>
+</html>

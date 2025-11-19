@@ -1,0 +1,38 @@
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
+}
+
+p.red::selection {
+  background: #ffb7b7;
+}
+p.red::-moz-selection {
+  background: #ffb7b7;
+}
+p.blue::selection {
+  background: #a8d1ff;
+}
+p.blue::-moz-selection {
+  background: #a8d1ff;
+}
+p.yellow::selection {
+  background: #fff2a8;
+}
+p.yellow::-moz-selection {
+  background: #fff2a8;
+}
+
+.message-wrapper {
+  flex: 0;
+}
+
+/* TODO: uniform form button width i.e. back, delete, save, etc */
+/* page-wrapper.fu-page {} */
+/* page-wrapper.fu-page .btn { min-width: ???; } */
+
+
+.fu-footer-slim {
+  padding: 1rem 0;
+}
