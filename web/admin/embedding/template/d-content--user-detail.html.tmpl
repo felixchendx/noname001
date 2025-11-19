@@ -1,0 +1,142 @@
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">Admin</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+        <div class="col-auto">
+          <div class="btn-list">
+            <a class="btn" href="{{ $._link.back }}">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+              Back to listing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-cards">
+
+        <!-- Form - User -->
+        <div class="col-12">
+          <form id="formUser" class="card">
+            <div class="card-body py-3">
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="username" class="form-label {{ if $._is_add_mode }}required{{ end }}">Username</label>
+                    <input id="username" class="form-control"
+                        type="text" placeholder="username"
+                        name="username" value="{{ $._data.user.Username }}" {{ if $._is_edit_mode }}disabled{{ end }}>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    {{ if $._is_add_mode }}
+                    <label for="password" class="form-label required">Password</label>
+                    <input id="password" class="form-control"
+                        type="text" placeholder="password"
+                        name="password" value="{{ $._data.user.Password }}">
+                    {{ else }}
+                    <label for="password" class="form-label">Password Override</label>
+                    <input id="password" class="form-control"
+                        type="text" placeholder="password"
+                        name="password" value="{{ $._data.user.Password }}">
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="role_simple" class="form-label required">Role</label>
+                    <select id="role_simple" class="form-select"
+                        name="role_simple">
+                      <option value="admin" {{ if eq $._data.user.RoleSimple "admin" }}selected{{ end }}>Admin</option>
+                      <option value="operator" {{ if eq $._data.user.RoleSimple "operator" }}selected{{ end }}>Operator</option>
+                      <option value="viewer" {{ if eq $._data.user.RoleSimple "viewer" }}selected{{ end }}>Viewer</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div>
+                {{ if $._is_edit_mode }}
+                <button class="btn btn-danger"
+                    type="button" data-bs-toggle="modal" data-bs-target="#dlgDeleteConfirmation">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h16" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /><path d="M10 12l4 4m0 -4l-4 4" /></svg>
+                  Delete
+                </button>
+                {{ end }}
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-primary"
+                    title="Save" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="post" formaction="{{ $._link.save }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+                  Save
+                </button>
+                <button id="btnSubmitDelete" style="display: none;" tabindex="-1"
+                    type="submit" formmethod="post" formaction="{{ $._link.delete }}"></button>
+              </div>
+            </div>
+
+            <input type="hidden" name="id" value="{{ $._data.user.ID }}">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgDeleteConfirmation" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div class="text-secondary">Do you really want to delete this data ?</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col">
+              <a class="btn w-100" data-bs-dismiss="modal" href="#">
+                Cancel
+              </a>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger w-100"
+                  onclick="nsCt.fn_doSubmitDelete();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // nsContentData
+  nsCD = {};
+  nsCD.isAddMode = {{ $._is_add_mode }};
+</script>
