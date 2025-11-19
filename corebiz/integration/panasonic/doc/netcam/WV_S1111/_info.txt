@@ -1,0 +1,42 @@
+=== Access Level ===
+1. Administrator
+2. Camera Control
+3. Live Only
+
+=== User ID ===
+[response]
+1~65532：UID
+0,65533,65534,65535: UID for multicast
+stream
+[Error response]
+-1: the number of user has been already full.
+-2: Image format requested is different from
+the setting.
+-3: stream number requested is not available
+-4: channel number requested is not
+available
+
+=== interfaces with access level 3 ===
+2.2.3. Get UID (User management of video transmission)
+2.2.5. H.264 start/stop transmission
+2.2.6. H.265 start/stop transmission
+2.2.7. Keep Alive
+2.4.2. Get UID (User management of video transmission)
+2.4.3. JPEG start/stop transmission
+2.5. JPEG transmission ("UID" is unnecessary)
+2.6. Image Viewer
+2.7. JPEG snapshot
+2.8. H.264/H.265 enforced I-frame insertion
+2.14. Dynamic change of I-frame interval without disconnect the stream
+4.2.4. Audio input transmission
+7.10.2. Getting alarm terminal input status (PULL)
+7.10.3. I/O and VMD status notification (PUSH)
+7.10.4. I/O and VMD status notification (New format)
+8.3.1. Recording Summary
+8.3.2. GetMeidaAttributes
+8.3.3. FindRecordingSequences
+8.3.4. GetRecordingSequencesSearchResults
+8.3.5. EndSearch
+8.4. MP4 Download
+9.1. Get product information
+9.2. Get capability

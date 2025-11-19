@@ -1,0 +1,70 @@
+CASE-001:
+- yogya-poc
+
+had been running ok
+- device-001 > more than 2 weeks
+- device-003 > more than 5 days
+
+^^^ both connect to same dahua hardware
+
+suddenly crash looping with stack trace:
+=== === === BEG === === ===
+noname001/corebiz/integration/dahua/httpapi.(*APIClient).FetchStreamInfo__000(0xc000027560, 0xc0013639a0)
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/corebiz/integration/dahua/httpapi/stream_info.go:77 +0x16a
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/corebiz/integration/dahua/httpapi.(*APIClient).FetchStreamInfo(0xc000027560, 0xc0013639a0)
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/corebiz/integration/dahua/httpapi/stream_info.go:32 +0x1b0
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/common/device/coordinator/live/dahua.(*DahuaDevice).GetStreamInfo(0xc0001679e0, {0x248cdc0, 0x1}, {0x24?, 0x7feb005640b8?})
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/common/device/coordinator/live/dahua/impl.go:30 +0xbd
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/common/device/coordinator.(*Coordinator).GetStreamInfo(0xc000302420, {0xc000121ad0, 0x24}, {0x248cdc0, 0x1})
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/common/device/coordinator/svc__001.go:43 +0xd1
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/common/device/service.(*Service).GetStreamInfo(0xc000302480, 0xc000309c80, {0x248cdc0, 0x1})
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/common/device/service/cdt__001.go:73 +0x245
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/feature/stream/coordinator.(*Coordinator)._reloadLiveStream(0xc000304460, {0xc00029e1e0, 0x24})
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/feature/stream/coordinator/stream.go:95 +0x99f
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/feature/stream/coordinator.(*Coordinator).postStart_loadLiveStream(0xc000304460)
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/feature/stream/coordinator/post_start.go:130 +0xd29
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/feature/stream/coordinator.(*Coordinator).postStartRoutine(...)
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/feature/stream/coordinator/post_start.go:14
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: noname001/app/module/feature/stream/coordinator.(*Coordinator).PostStart.func1()
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/feature/stream/coordinator/coordinator.go:90 +0x1d
+Jul 16 18:34:00 yogya-stream003 noname001[33233]: created by noname001/app/module/feature/stream/coordinator.(*Coordinator).PostStart in goroutine 1
+Jul 16 18:34:00 yogya-stream003 noname001[33233]:         /home/fulabs/_codes/fulabs-io/noname001/app/module/feature/stream/coordinator/coordinator.go:87 +0x56
+=== === === END === === ===
+
+
+see: corebiz/integration/dahua/httpapi/stream_info.go
+
+=== === === code snippet - latest === === ===
+videoConfig, ev1 := api.APIV1.GetVideoEncodeConfig(params.ChannelID)
+
+if !ev1.IsConsideredError() {                                     <<< THIS CHECK IS NOT INAF, the returned var can be nil, even if there's no error!
+    streamInfo = &response.StreamInfo{}
+
+    streamInfo.VideoEnabled          = videoConfig.VideoEnable    <<< NPE HERE
+    ...
+}
+=== === === code snippet - latest === === ===
+=== === === code snippet - old code === === ===
+videoConfig, ev1:=  api.APIV1.GetVideoEncodeConfig(params.ChannelID)
+if (!ev1.IsConsideredError()) && (videoConfig != nil){           <<< old code also check for nil
+    wrapped.OriginalData["FetchStreamInfo__000"] = videoConfig
+
+    wrapped.StreamInfo.VideoEnabled = videoConfig.VideoEnable    <<< never enter here due to nil check
+    ...
+}
+=== === === code snippet - old code === === ===
+
+
+================================================================================
+if general programming pattern is to be enforced
+the function GetAllVideoEncodeConfig must return EITHER one of these two outcome:
+- nil  , error indicator
+- value, non-error indicator
+
+if possible, rework and simplify the parsing for
+file: corebiz/integration/dahua/httpapi/v1/cgiBin__cfgMng_videoEncode.go
+func: GetAllVideoEncodeConfig
+
+relevant response from hardware is in file 'case-001__resp_encode.txt'
+
+// TODO: test, modify / rework / simplify

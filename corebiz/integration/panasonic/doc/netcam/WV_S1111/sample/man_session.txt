@@ -1,0 +1,6 @@
+H.264 session:7
+Audio(udp) session:0
+Jpeg session:3
+Audio(tcp) session:0
+
+Used UID:23206,23207,23208,23213,23214,23215,23216,23217,23218

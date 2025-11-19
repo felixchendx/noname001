@@ -1,0 +1,92 @@
+Dahua Camera API
+
+
+AUTHORIZATION Digest Auth
+Username	<username>
+Password	<password>
+
+
+GET	GetMachineName
+-- Document Keyword
+   9.8.6 GetMachineName
+
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getMachineName
+
+-- Params
+   action	getMachineName
+
+-- Response
+   "name=XVR"
+
+
+GET	GetDeviceType
+-- Document Keyword
+   9.8.3 GetDeviceType
+   
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getDeviceType
+
+-- Params
+   action	getDeviceType
+
+-- Response
+   "type=DH-XVR5216AN-I3"
+
+
+GET	GetVendor
+-- Document Keyword
+   9.8.8 GetVendor
+
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getVendor
+
+-- Params
+   action	getVendor
+
+-- Response
+   vendor=Dahua
+
+
+GET	GetHardwareVersion
+-- Document Keyword
+   9.8.4 GetHardwareVersion
+
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getHardwareVersion
+
+-- Params
+   action	getHardwareVersion
+
+-- Response
+   "version=V1.0"
+
+
+GET	GetSoftwareVersion
+-- Document Keyword
+   9.8.9 GetSoftwareVersion
+
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getSoftwareVersion
+
+-- Params
+   action	getSoftwareVersion
+
+-- Response
+   "version=4.001.0000000.17.R,build:2021-12-30 21:09:34"
+
+
+GET	GetSystemInfo
+-- Document Keyword
+   9.8.7 GetSystemInfo
+   
+-- URL
+   http://<ip>:<port>/cgi-bin/magicBox.cgi?action=getSystemInfo
+
+-- Params
+   action	getSystemInfo
+
+-- Response
+   "processor=ST7108
+   serialNumber=8E042A0PAZ91103
+   updateSerial=DH-XVR5216AN-I3"
