@@ -1,0 +1,229 @@
+docref: 15.10.18 /ISAPI/System/capabilities
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<DeviceCap version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<SysCap>
+		<isSupportDst>true</isSupportDst>
+		<NetworkCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<isSupportWireless>false</isSupportWireless>
+			<isSupportWAN>false</isSupportWAN>
+			<isSupportPPPoE>false</isSupportPPPoE>
+			<isSupportBond>false</isSupportBond>
+			<isSupport802_1x>false</isSupport802_1x>
+			<isSupportNtp>true</isSupportNtp>
+			<isSupportFtp>false</isSupportFtp>
+			<isSupportUpnp>true</isSupportUpnp>
+			<isSupportPNP>false</isSupportPNP>
+			<isSupportDdns>true</isSupportDdns>
+			<isSupportHttps>true</isSupportHttps>
+			<SnmpCap>
+				<isSupport>false</isSupport>
+			</SnmpCap>
+			<isSupportExtNetCfg>true</isSupportExtNetCfg>
+			<isSupportNetPreviewStrategy>false</isSupportNetPreviewStrategy>
+			<isSupportEZVIZ>true</isSupportEZVIZ>
+			<GB28181Cap>
+				<isSupportGB28181Service>false</isSupportGB28181Service>
+			</GB28181Cap>
+			<VerificationCodeModification>
+				<verificationCodeType opt="normal,empty">empty</verificationCodeType>
+				<isSupportDeclarationURL>true</isSupportDeclarationURL>
+				<isSupportPrivacyPolicyURL>true</isSupportPrivacyPolicyURL>
+				<verificationCodeModify>false</verificationCodeModify>
+				<Hyperlinks>
+					<declarationURL>https://www.hik-connect.com/views/terms/termsofservice.html</declarationURL>
+					<privacyPolicyURL>https://www.hik-connect.com/views/terms/privacypolicy.html</privacyPolicyURL>
+				</Hyperlinks>
+				<isSupportVerificationCodeCheck>true</isSupportVerificationCodeCheck>
+			</VerificationCodeModification>
+			<isSupportIntegrate>true</isSupportIntegrate>
+			<isSupportEZVIZTiming>true</isSupportEZVIZTiming>
+			<isSupportResourceStatistics>true</isSupportResourceStatistics>
+			<isSupportPOEPortsDisableAdaptiveServer>true</isSupportPOEPortsDisableAdaptiveServer>
+			<isSupportGetLinkSocketIP>true</isSupportGetLinkSocketIP>
+		</NetworkCap>
+		<IOCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<IOInputPortNums>0</IOInputPortNums>
+			<IOOutputPortNums>0</IOOutputPortNums>
+			<isSupportSetAllIOOutput>true</isSupportSetAllIOOutput>
+			<enabledIOOutputPortNums>0</enabledIOOutputPortNums>
+		</IOCap>
+		<SerialCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<rs485PortNums>0</rs485PortNums>
+			<rs422PortNums>0</rs422PortNums>
+			<rs232PortNums>0</rs232PortNums>
+			<supportRS232Config>false</supportRS232Config>
+		</SerialCap>
+		<VideoCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<videoInputPortNums>0</videoInputPortNums>
+			<videoOutputPortNums>2</videoOutputPortNums>
+			<menuNums>1</menuNums>
+		</VideoCap>
+		<isSupportHolidy>true</isSupportHolidy>
+		<RebootConfigurationCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<RTSP>true</RTSP>
+			<HTTP>true</HTTP>
+		</RebootConfigurationCap>
+		<isSupportSubscribeEvent>true</isSupportSubscribeEvent>
+		<isSupportDiagnosedData>false</isSupportDiagnosedData>
+		<isSupportSimpleDevStatus>true</isSupportSimpleDevStatus>
+		<isSupportFlexible>true</isSupportFlexible>
+		<isSupportDiagnosedDataParameter>false</isSupportDiagnosedDataParameter>
+		<isSupportTimeCap>true</isSupportTimeCap>
+	</SysCap>
+	<voicetalkNums>0</voicetalkNums>
+	<isSupportSnapshot>false</isSupportSnapshot>
+	<SecurityCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<supportUserNums>32</supportUserNums>
+		<userBondIpNums>1</userBondIpNums>
+		<userBondMacNums>1</userBondMacNums>
+		<isSupportOnlineUser>true</isSupportOnlineUser>
+		<securityVersion opt="1"/>
+		<keyIterateNum>100</keyIterateNum>
+		<isSupportUserCheck>true</isSupportUserCheck>
+		<isSupportGUIDFileDataExport>true</isSupportGUIDFileDataExport>
+		<isSupportSecurityQuestionConfig>true</isSupportSecurityQuestionConfig>
+		<isSupportSecurityEmail>true</isSupportSecurityEmail>
+		<isSupportGetOnlineUserListSC>false</isSupportGetOnlineUserListSC>
+		<SecurityLimits>
+			<LoginPasswordLenLimit min="1" max="16"/>
+			<SecurityAnswerLenLimit min="1" max="128"/>
+		</SecurityLimits>
+		<WebCertificateCap>
+			<CertificateType opt="digest,digest/basic">digest</CertificateType>
+		</WebCertificateCap>
+		<isSupportConfigFileImport>true</isSupportConfigFileImport>
+		<isSupportConfigFileExport>true</isSupportConfigFileExport>
+		<cfgFileSecretKeyLenLimit min="1" max="16"/>
+		<supportIPCActivatePassword>true</supportIPCActivatePassword>
+		<isSupportPictureURlCertificate opt="true,false">false</isSupportPictureURlCertificate>
+		<isSupportResetChannelPassword>false</isSupportResetChannelPassword>
+		<isSupportUnloggedUserPermissionConfig>true</isSupportUnloggedUserPermissionConfig>
+	</SecurityCap>
+	<EventCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportHDFull>true</isSupportHDFull>
+		<isSupportHDError>true</isSupportHDError>
+		<isSupportNicBroken>true</isSupportNicBroken>
+		<isSupportIpConflict>true</isSupportIpConflict>
+		<isSupportIllAccess>true</isSupportIllAccess>
+		<isSupportViException>false</isSupportViException>
+		<isSupportViMismatch>false</isSupportViMismatch>
+		<isSupportRecordException>true</isSupportRecordException>
+		<isSupportRaidException>false</isSupportRaidException>
+		<isSupportViResMismatch>false</isSupportViResMismatch>
+		<isSupportPOCException>false</isSupportPOCException>
+		<isSupportSpareException>false</isSupportSpareException>
+		<isSupportHumanRecognition>false</isSupportHumanRecognition>
+		<isSupportFaceSnap>true</isSupportFaceSnap>
+		<isSupportTriggerCapCheck>true</isSupportTriggerCapCheck>
+	</EventCap>
+	<RacmCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportZeroChan>false</isSupportZeroChan>
+		<inputProxyNums>4</inputProxyNums>
+		<eSATANums>0</eSATANums>
+		<miniSASNums>0</miniSASNums>
+		<nasNums>0</nasNums>
+		<ipSanNums>0</ipSanNums>
+		<isSupportRaid>false</isSupportRaid>
+		<isSupportExtHdCfg>true</isSupportExtHdCfg>
+		<isSupportLogDataPackage>false</isSupportLogDataPackage>
+		<isSupportTransCode>false</isSupportTransCode>
+		<isSupportIPCConfigCSV>true</isSupportIPCConfigCSV>
+		<isSupportIpcStreamType>true</isSupportIpcStreamType>
+		<isSupportIOInputProxy>true</isSupportIOInputProxy>
+		<isSupportIOOutputProxy>true</isSupportIOOutputProxy>
+		<isSupportPTZRs485Proxy>true</isSupportPTZRs485Proxy>
+		<isSupportSMARTTest>true</isSupportSMARTTest>
+		<recordSearchType opt="CMR,MOTION,ALARM,EDR,ALARMANDMOTION,Command,manual,AllEvent"></recordSearchType>
+		<isSupportActivateIpc>true</isSupportActivateIpc>
+		<isSupportCheckIpcSecurity>
+			<isSupportCheckPassword>true</isSupportCheckPassword>
+		</isSupportCheckIpcSecurity>
+		<isSupportSyncIPCPassword>true</isSupportSyncIPCPassword>
+		<isSupportTransferIPC>true</isSupportTransferIPC>
+		<isSupportSmartSearch>true</isSupportSmartSearch>
+		<isSupportPOS>false</isSupportPOS>
+		<isSupportLinkNum>true</isSupportLinkNum>
+		<ExternalDevice>
+			<USB>
+				<debugLogOutput>false</debugLogOutput>
+				<isSupportCapturePackage>false</isSupportCapturePackage>
+				<isSupportStreamStorage>true</isSupportStreamStorage>
+			</USB>
+		</ExternalDevice>
+		<customProtocolNums>4</customProtocolNums>
+		<isSupportIPCTiming>true</isSupportIPCTiming>
+		<isSupportWebPrivatePlaybackByUTC>true</isSupportWebPrivatePlaybackByUTC>
+		<isSupportFindCommonFileByUTC>true</isSupportFindCommonFileByUTC>
+		<isSupportFindEventFileByUTC>true</isSupportFindEventFileByUTC>
+		<isSupportSmartSearchRecordByUTC>true</isSupportSmartSearchRecordByUTC>
+		<isSupportMRDSearchByTimeZone>true</isSupportMRDSearchByTimeZone>
+		<isSupportSearchRecordLabelByUTC>true</isSupportSearchRecordLabelByUTC>
+		<isSupportSearchPictureByUTC>true</isSupportSearchPictureByUTC>
+		<isSupportSmartSearchPictureByUTC>true</isSupportSmartSearchPictureByUTC>
+		<isSupportFindLogByUTC>true</isSupportFindLogByUTC>
+		<isSupportUploadRecordByUTC>true</isSupportUploadRecordByUTC>
+		<isSupportPlaybackByUTC>true</isSupportPlaybackByUTC>
+		<isSupportFaceDetecttionAlarmByTimeZone>true</isSupportFaceDetecttionAlarmByTimeZone>
+		<isSupportRecordSearchByTargetType>true</isSupportRecordSearchByTargetType>
+		<securityLogServer>
+			<isSupportLogServer>true</isSupportLogServer>
+		</securityLogServer>
+		<isSupportLinkToIPCWeb>true</isSupportLinkToIPCWeb>
+	</RacmCap>
+	<PTZCtrlCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportPatrols>true</isSupportPatrols>
+	</PTZCtrlCap>
+	<SmartCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportROI>false</isSupportROI>
+		<isSupportFaceDetect>false</isSupportFaceDetect>
+		<isSupportIntelliTrace>false</isSupportIntelliTrace>
+		<isSupportFieldDetection>true</isSupportFieldDetection>
+		<isSupportDefocusDetection>false</isSupportDefocusDetection>
+		<isSupportAudioDetection>false</isSupportAudioDetection>
+		<isSupportSceneChangeDetection>false</isSupportSceneChangeDetection>
+		<isSupportLineDetection>true</isSupportLineDetection>
+		<isSupportRegionEntrance>true</isSupportRegionEntrance>
+		<isSupportRegionExiting>true</isSupportRegionExiting>
+		<isSupportLoitering>false</isSupportLoitering>
+		<isSupportGroup>false</isSupportGroup>
+		<isSupportRapidMove>false</isSupportRapidMove>
+		<isSupportParking>false</isSupportParking>
+		<isSupportUnattendedBaggage>false</isSupportUnattendedBaggage>
+		<isSupportAttendedBaggage>false</isSupportAttendedBaggage>
+		<isSupportAnalysisUnitSwitch>false</isSupportAnalysisUnitSwitch>
+	</SmartCap>
+	<isSupportStreamingEncrypt>true</isSupportStreamingEncrypt>
+	<TestCap>
+		<isSupportEmailTest>true</isSupportEmailTest>
+	</TestCap>
+	<ThermalCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportFireDetection>false</isSupportFireDetection>
+		<isSupportThermometry>false</isSupportThermometry>
+		<isSupportNVR>true</isSupportNVR>
+		<isSupportThermometrySchedule>false</isSupportThermometrySchedule>
+		<isSupportTemperatureSchedule>false</isSupportTemperatureSchedule>
+		<isSupportFireDetectionSchedule>false</isSupportFireDetectionSchedule>
+	</ThermalCap>
+	<isSupportGetmutexFuncErrMsg>false</isSupportGetmutexFuncErrMsg>
+	<isSupportTokenAuthenticate>true</isSupportTokenAuthenticate>
+	<isSupportStreamDualVCA>true</isSupportStreamDualVCA>
+	<isSupportChannelEventCap>true</isSupportChannelEventCap>
+	<isSupportTokenAuthenticate>true</isSupportTokenAuthenticate>
+	<isSupportPictureServer>true</isSupportPictureServer>
+	<isSupportInputProxyDeviceInfo>true</isSupportInputProxyDeviceInfo>
+	<isSupportEzvizIOAlarmByChannel>true</isSupportEzvizIOAlarmByChannel>
+	<isSupportOnlineUpgradeTask>true</isSupportOnlineUpgradeTask>
+</DeviceCap>

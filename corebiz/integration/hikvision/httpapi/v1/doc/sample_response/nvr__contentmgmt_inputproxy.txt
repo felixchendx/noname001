@@ -1,0 +1,146 @@
+docref: 15.2.17 /ISAPI/ContentMgmt/InputProxy/channels/status
+notes:
+- seems to be digital channels
+- beware that onvif,isapi,sony connected devices also included in this list, do filter with proxyProtocol
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<InputProxyChannelStatusList version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<InputProxyChannelStatus version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<id>1</id>
+		<sourceInputPortDescriptor>
+			<proxyProtocol>HIKVISION</proxyProtocol>
+			<addressingFormatType>ipaddress</addressingFormatType>
+			<ipAddress>192.168.254.3</ipAddress>
+			<managePortNo>8000</managePortNo>
+			<srcInputPort>1</srcInputPort>
+			<userName>admin</userName>
+			<connMode>plugplay</connMode>
+			<streamType>auto</streamType>
+			<deviceID></deviceID>
+		</sourceInputPortDescriptor>
+		<online>true</online>
+		<streamingProxyChannelIdList>
+			<streamingProxyChannelId>101</streamingProxyChannelId>
+			<streamingProxyChannelId>102</streamingProxyChannelId>
+		</streamingProxyChannelIdList>
+		<relatedIOProxy>
+			<inputProxyPortIdList></inputProxyPortIdList>
+			<outputProxyPortIdList></outputProxyPortIdList>
+		</relatedIOProxy>
+		<chanDetectResult>connect</chanDetectResult>
+		<SecurityStatus>
+			<PasswordStatus>invalid</PasswordStatus>
+		</SecurityStatus>
+	</InputProxyChannelStatus>
+	<InputProxyChannelStatus version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<id>2</id>
+		<sourceInputPortDescriptor>
+			<proxyProtocol>HIKVISION</proxyProtocol>
+			<addressingFormatType>ipaddress</addressingFormatType>
+			<ipAddress>192.168.254.8</ipAddress>
+			<managePortNo>8000</managePortNo>
+			<srcInputPort>1</srcInputPort>
+			<userName>admin</userName>
+			<connMode>plugplay</connMode>
+			<streamType>auto</streamType>
+			<deviceID></deviceID>
+		</sourceInputPortDescriptor>
+		<online>false</online>
+		<streamingProxyChannelIdList></streamingProxyChannelIdList>
+		<relatedIOProxy>
+			<inputProxyPortIdList></inputProxyPortIdList>
+			<outputProxyPortIdList></outputProxyPortIdList>
+		</relatedIOProxy>
+		<chanDetectResult>notExist</chanDetectResult>
+		<SecurityStatus>
+			<PasswordStatus>invalid</PasswordStatus>
+		</SecurityStatus>
+	</InputProxyChannelStatus>
+	<InputProxyChannelStatus version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<id>3</id>
+		<sourceInputPortDescriptor>
+			<proxyProtocol>HIKVISION</proxyProtocol>
+			<addressingFormatType>ipaddress</addressingFormatType>
+			<ipAddress>192.168.254.4</ipAddress>
+			<managePortNo>8000</managePortNo>
+			<srcInputPort>1</srcInputPort>
+			<userName>admin</userName>
+			<connMode>plugplay</connMode>
+			<streamType>auto</streamType>
+			<deviceID></deviceID>
+		</sourceInputPortDescriptor>
+		<online>false</online>
+		<streamingProxyChannelIdList></streamingProxyChannelIdList>
+		<relatedIOProxy>
+			<inputProxyPortIdList></inputProxyPortIdList>
+			<outputProxyPortIdList></outputProxyPortIdList>
+		</relatedIOProxy>
+		<chanDetectResult>notExist</chanDetectResult>
+		<SecurityStatus>
+			<PasswordStatus>invalid</PasswordStatus>
+		</SecurityStatus>
+	</InputProxyChannelStatus>
+	<InputProxyChannelStatus version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<id>4</id>
+		<sourceInputPortDescriptor>
+			<proxyProtocol>HIKVISION</proxyProtocol>
+			<addressingFormatType>ipaddress</addressingFormatType>
+			<ipAddress>192.168.254.5</ipAddress>
+			<managePortNo>8000</managePortNo>
+			<srcInputPort>1</srcInputPort>
+			<userName>admin</userName>
+			<connMode>plugplay</connMode>
+			<streamType>auto</streamType>
+			<deviceID></deviceID>
+		</sourceInputPortDescriptor>
+		<online>false</online>
+		<streamingProxyChannelIdList></streamingProxyChannelIdList>
+		<relatedIOProxy>
+			<inputProxyPortIdList></inputProxyPortIdList>
+			<outputProxyPortIdList></outputProxyPortIdList>
+		</relatedIOProxy>
+		<chanDetectResult>notExist</chanDetectResult>
+		<SecurityStatus>
+			<PasswordStatus>invalid</PasswordStatus>
+		</SecurityStatus>
+	</InputProxyChannelStatus>
+</InputProxyChannelStatusList>
+
+
+
+// ========================================================================= //
+connected using ONVIF
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<InputProxyChannelStatusList version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<InputProxyChannelStatus version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<id>5</id>
+		<sourceInputPortDescriptor>
+			<proxyProtocol>ONVIF</proxyProtocol>
+			<addressingFormatType>ipaddress</addressingFormatType>
+			<ipAddress>10.0.1.252</ipAddress>
+			<managePortNo>80</managePortNo>
+			<srcInputPort>1</srcInputPort>
+			<userName>admin</userName>
+			<streamType>auto</streamType>
+			<deviceID></deviceID>
+		</sourceInputPortDescriptor>
+		<online>false</online>
+		<streamingProxyChannelIdList></streamingProxyChannelIdList>
+		<relatedIOProxy>
+			<inputProxyPortIdList></inputProxyPortIdList>
+			<outputProxyPortIdList></outputProxyPortIdList>
+		</relatedIOProxy>
+		<chanDetectResult>netUnreachable</chanDetectResult>
+		<SecurityStatus>
+			<PasswordStatus>weak</PasswordStatus>
+		</SecurityStatus>
+	</InputProxyChannelStatus>
+</InputProxyChannelStatusList>

@@ -1,0 +1,20 @@
+docref: 15.10.21 /ISAPI/System/deviceInfo
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<DeviceInfo version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<deviceName>Embedded Net DVR</deviceName>
+	<deviceID>484c3337-3838-3736-3230-e0baade9b97b</deviceID>
+	<model>iDS-7204HQHI-M1/E</model>
+	<serialNumber>REDACTED</serialNumber>
+	<macAddress>REDACTED</macAddress>
+	<firmwareVersion>V4.70.180</firmwareVersion>
+	<firmwareReleasedDate>build 220623</firmwareReleasedDate>
+	<encoderVersion>V5.0</encoderVersion>
+	<encoderReleasedDate>build 220622</encoderReleasedDate>
+	<deviceType>DVR</deviceType>
+	<telecontrolID>255</telecontrolID>
+	<hardwareVersion>0xc0efe00</hardwareVersion>
+	<manufacturer>hikvision</manufacturer>
+	<customizedInfo>DZP20220525142</customizedInfo>
+</DeviceInfo>

@@ -1,0 +1,23 @@
+docref: 15.10.172 /ISAPI/System/status
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<DeviceStatus version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<currentDeviceTime>2024-11-07T12:09:45+07:00</currentDeviceTime>
+	<deviceUpTime>4487767</deviceUpTime>
+	<CPUList>
+		<CPU>
+			<cpuDescription>300.00</cpuDescription>
+			<cpuUtilization>4</cpuUtilization>
+		</CPU>
+	</CPUList>
+	<MemoryList>
+		<Memory>
+			<memoryDescription>DDR Memory</memoryDescription>
+			<memoryUsage>
+196.125000</memoryUsage>
+			<memoryAvailable>
+38.703125</memoryAvailable>
+		</Memory>
+	</MemoryList>
+</DeviceStatus>

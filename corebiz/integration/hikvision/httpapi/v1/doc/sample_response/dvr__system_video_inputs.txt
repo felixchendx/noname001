@@ -1,0 +1,48 @@
+docref: 15.10.202 /ISAPI/System/Video/inputs
+notes:
+- seems to be hardware channels
+- this endpoint seems to be DVR only ?
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<VideoInput version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<VideoInputChannelList version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<VideoInputChannel version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<id>1</id>
+			<inputPort>1</inputPort>
+			<videoInputEnabled>true</videoInputEnabled>
+			<name>Camera 01</name>
+			<videoFormat>PAL</videoFormat>
+			<resDesc>1920*1080(1080P)P25</resDesc>
+		</VideoInputChannel>
+		<VideoInputChannel version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<id>2</id>
+			<inputPort>2</inputPort>
+			<videoInputEnabled>true</videoInputEnabled>
+			<name>Camera 02</name>
+			<videoFormat>PAL</videoFormat>
+			<resDesc>NO VIDEO</resDesc>
+		</VideoInputChannel>
+		<VideoInputChannel version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<id>3</id>
+			<inputPort>3</inputPort>
+			<videoInputEnabled>true</videoInputEnabled>
+			<name>Camera 03</name>
+			<videoFormat>PAL</videoFormat>
+			<resDesc>NO VIDEO</resDesc>
+		</VideoInputChannel>
+		<VideoInputChannel version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<id>4</id>
+			<inputPort>4</inputPort>
+			<videoInputEnabled>true</videoInputEnabled>
+			<name>Camera 04</name>
+			<videoFormat>PAL</videoFormat>
+			<resDesc>NO VIDEO</resDesc>
+		</VideoInputChannel>
+	</VideoInputChannelList>
+</VideoInput>

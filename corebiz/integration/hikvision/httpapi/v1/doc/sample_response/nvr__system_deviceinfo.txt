@@ -1,0 +1,19 @@
+docref: 15.10.21 /ISAPI/System/deviceInfo
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<DeviceInfo version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<deviceName>Network Video Recorder</deviceName>
+	<deviceID>484b3431-3732-3435-3833-c06ded1db9e3</deviceID>
+	<model>DS-7104NI-Q1/4P/M</model>
+	<serialNumber>REDACTED</serialNumber>
+	<macAddress>REDACTED</macAddress>
+	<firmwareVersion>V4.71.007</firmwareVersion>
+	<firmwareReleasedDate>build 220705</firmwareReleasedDate>
+	<encoderVersion>V5.0</encoderVersion>
+	<encoderReleasedDate>build 220609</encoderReleasedDate>
+	<deviceType>NVR</deviceType>
+	<telecontrolID>255</telecontrolID>
+	<hardwareVersion>B-R-K20B2_E-00</hardwareVersion>
+	<manufacturer>hikvision</manufacturer>
+</DeviceInfo>

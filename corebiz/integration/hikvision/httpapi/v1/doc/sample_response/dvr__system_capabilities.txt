@@ -1,0 +1,251 @@
+docref: 15.10.18 /ISAPI/System/capabilities
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<DeviceCap version="1.0"
+	xmlns="http://www.hikvision.com/ver20/XMLSchema">
+	<WPSCap>
+		<isSupport>true</isSupport>
+	</WPSCap>
+	<SysCap>
+		<isSupportDst>true</isSupportDst>
+		<NetworkCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<isSupportWireless>true</isSupportWireless>
+			<isWirelessMutexWithWirelessServer>true</isWirelessMutexWithWirelessServer>
+			<isSupportWPS>true</isSupportWPS>
+			<isSupportWAN>false</isSupportWAN>
+			<isSupportPPPoE>true</isSupportPPPoE>
+			<isSupportBond>false</isSupportBond>
+			<isSupport802_1x>false</isSupport802_1x>
+			<isSupportNtp>true</isSupportNtp>
+			<isSupportFtp>false</isSupportFtp>
+			<isSupportUpnp>true</isSupportUpnp>
+			<isSupportPNP>false</isSupportPNP>
+			<isSupportDdns>true</isSupportDdns>
+			<isSupportHttps>true</isSupportHttps>
+			<SnmpCap>
+				<isSupport>false</isSupport>
+			</SnmpCap>
+			<isSupportExtNetCfg>true</isSupportExtNetCfg>
+			<isSupportNetPreviewStrategy>false</isSupportNetPreviewStrategy>
+			<isSupportEZVIZ>true</isSupportEZVIZ>
+			<GB28181Cap>
+				<isSupportGB28181Service>false</isSupportGB28181Service>
+			</GB28181Cap>
+			<VerificationCodeModification>
+				<verificationCodeType opt="normal,empty">empty</verificationCodeType>
+				<isSupportDeclarationURL>true</isSupportDeclarationURL>
+				<isSupportPrivacyPolicyURL>true</isSupportPrivacyPolicyURL>
+				<verificationCodeModify>false</verificationCodeModify>
+				<Hyperlinks>
+					<declarationURL>https://www.hik-connect.com/views/terms/termsofservice.html</declarationURL>
+					<privacyPolicyURL>https://www.hik-connect.com/views/terms/privacypolicy.html</privacyPolicyURL>
+				</Hyperlinks>
+				<isSupportVerificationCodeCheck>true</isSupportVerificationCodeCheck>
+			</VerificationCodeModification>
+			<isSupportIntegrate>true</isSupportIntegrate>
+			<isSupportResourceStatistics>false</isSupportResourceStatistics>
+			<isSupportBandwidthLimit>true</isSupportBandwidthLimit>
+			<isSupportGetLinkSocketIP>true</isSupportGetLinkSocketIP>
+		</NetworkCap>
+		<IOCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<IOInputPortNums>0</IOInputPortNums>
+			<IOOutputPortNums>0</IOOutputPortNums>
+			<isSupportIOOutputAdvanceParameter>false</isSupportIOOutputAdvanceParameter>
+			<isSupportSetAllIOOutput>true</isSupportSetAllIOOutput>
+			<enabledIOOutputPortNums>1</enabledIOOutputPortNums>
+		</IOCap>
+		<SerialCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<rs485PortNums>1</rs485PortNums>
+			<rs422PortNums>0</rs422PortNums>
+			<rs232PortNums>0</rs232PortNums>
+			<supportRS232Config>false</supportRS232Config>
+		</SerialCap>
+		<VideoCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<videoInputPortNums>4</videoInputPortNums>
+			<videoOutputPortNums>2</videoOutputPortNums>
+			<menuNums>1</menuNums>
+		</VideoCap>
+		<AudioCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<audioInputNums>1</audioInputNums>
+			<audioOutputNums>1</audioOutputNums>
+		</AudioCap>
+		<isSupportHolidy>true</isSupportHolidy>
+		<RebootConfigurationCap version="1.0"
+			xmlns="http://www.hikvision.com/ver20/XMLSchema">
+			<Genetec>true</Genetec>
+			<ONVIF>true</ONVIF>
+			<RTSP>true</RTSP>
+			<HTTP>true</HTTP>
+			<SADP>
+				<ISDiscoveryMode>true</ISDiscoveryMode>
+				<PcapMode>true</PcapMode>
+			</SADP>
+			<IPCAddStatus>true</IPCAddStatus>
+		</RebootConfigurationCap>
+		<isSupportSubscribeEvent>true</isSupportSubscribeEvent>
+		<isSupportDiagnosedData>true</isSupportDiagnosedData>
+		<isSupportSimpleDevStatus>true</isSupportSimpleDevStatus>
+		<isSupportFlexible>true</isSupportFlexible>
+		<isSupportDiagnosedDataParameter>true</isSupportDiagnosedDataParameter>
+		<isSupportTimeCap>true</isSupportTimeCap>
+	</SysCap>
+	<voicetalkNums>1</voicetalkNums>
+	<isSupportSnapshot>false</isSupportSnapshot>
+	<SecurityCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<supportUserNums>32</supportUserNums>
+		<userBondIpNums>1</userBondIpNums>
+		<userBondMacNums>1</userBondMacNums>
+		<isSupportOnlineUser>true</isSupportOnlineUser>
+		<securityVersion opt="1"/>
+		<keyIterateNum>100</keyIterateNum>
+		<isSupportUserCheck>true</isSupportUserCheck>
+		<isSupportGUIDFileDataExport>true</isSupportGUIDFileDataExport>
+		<isSupportSecurityQuestionConfig>true</isSupportSecurityQuestionConfig>
+		<isSupportSecurityEmail>true</isSupportSecurityEmail>
+		<isSupportGetOnlineUserListSC>false</isSupportGetOnlineUserListSC>
+		<SecurityLimits>
+			<LoginPasswordLenLimit min="1" max="16"/>
+			<SecurityAnswerLenLimit min="1" max="128"/>
+		</SecurityLimits>
+		<isSupportONVIFUserManagement>true</isSupportONVIFUserManagement>
+		<WebCertificateCap>
+			<CertificateType opt="digest,digest/basic">digest</CertificateType>
+		</WebCertificateCap>
+		<isSupportConfigFileImport>true</isSupportConfigFileImport>
+		<isSupportConfigFileExport>true</isSupportConfigFileExport>
+		<cfgFileSecretKeyLenLimit min="1" max="16"/>
+		<supportIPCActivatePassword>true</supportIPCActivatePassword>
+		<isSupportPictureURlCertificate opt="true,false">false</isSupportPictureURlCertificate>
+	</SecurityCap>
+	<EventCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportHDFull>true</isSupportHDFull>
+		<isSupportHDError>true</isSupportHDError>
+		<isSupportNicBroken>true</isSupportNicBroken>
+		<isSupportIpConflict>true</isSupportIpConflict>
+		<isSupportIllAccess>true</isSupportIllAccess>
+		<isSupportViException>false</isSupportViException>
+		<isSupportViMismatch>false</isSupportViMismatch>
+		<isSupportRecordException>true</isSupportRecordException>
+		<isSupportRaidException>false</isSupportRaidException>
+		<isSupportViResMismatch>false</isSupportViResMismatch>
+		<isSupportPOCException>false</isSupportPOCException>
+		<isSupportSpareException>false</isSupportSpareException>
+		<isSupportHumanRecognition>true</isSupportHumanRecognition>
+		<isSupportFaceContrast>false</isSupportFaceContrast>
+		<isSupportFaceSnap>true</isSupportFaceSnap>
+		<isSupportTriggerCapCheck>true</isSupportTriggerCapCheck>
+	</EventCap>
+	<RacmCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportZeroChan>true</isSupportZeroChan>
+		<inputProxyNums>5</inputProxyNums>
+		<eSATANums>0</eSATANums>
+		<miniSASNums>0</miniSASNums>
+		<nasNums>2</nasNums>
+		<ipSanNums>2</ipSanNums>
+		<isSupportRaid>false</isSupportRaid>
+		<isSupportExtHdCfg>true</isSupportExtHdCfg>
+		<isSupportLogDataPackage>false</isSupportLogDataPackage>
+		<isSupportTransCode>false</isSupportTransCode>
+		<isSupportIpcImport>true</isSupportIpcImport>
+		<isSupportIpcStreamType>true</isSupportIpcStreamType>
+		<isSupportIOInputProxy>true</isSupportIOInputProxy>
+		<isSupportIOOutputProxy>true</isSupportIOOutputProxy>
+		<isSupportPTZRs485Proxy>true</isSupportPTZRs485Proxy>
+		<isSupportSMARTTest>true</isSupportSMARTTest>
+		<pictureSearchType opt="vehicleDetection,allPic"></pictureSearchType>
+		<recordSearchType opt="CMR,MOTION,ALARM,EDR,ALARMANDMOTION,Command,manual,AllEvent"></recordSearchType>
+		<isSupportActivateIpc>true</isSupportActivateIpc>
+		<isSupportCheckIpcSecurity>
+			<isSupportCheckPassword>true</isSupportCheckPassword>
+		</isSupportCheckIpcSecurity>
+		<isSupportSyncIPCPassword>true</isSupportSyncIPCPassword>
+		<isSupportTransferIPC>true</isSupportTransferIPC>
+		<isSupportMainAndSubRecord>true</isSupportMainAndSubRecord>
+		<isSupportSmartSearch>true</isSupportSmartSearch>
+		<isSupportPOS>false</isSupportPOS>
+		<isSupportLinkNum>true</isSupportLinkNum>
+		<ExternalDevice>
+			<USB>
+				<debugLogOutput>true</debugLogOutput>
+				<isSupportCapturePackage>false</isSupportCapturePackage>
+				<isSupportStreamStorage>false</isSupportStreamStorage>
+			</USB>
+		</ExternalDevice>
+		<customProtocolNums>5</customProtocolNums>
+		<isSupportIPCTiming>true</isSupportIPCTiming>
+		<isSupportWebPrivatePlaybackByUTC>true</isSupportWebPrivatePlaybackByUTC>
+		<isSupportFindCommonFileByUTC>true</isSupportFindCommonFileByUTC>
+		<isSupportFindEventFileByUTC>true</isSupportFindEventFileByUTC>
+		<isSupportSmartSearchRecordByUTC>true</isSupportSmartSearchRecordByUTC>
+		<isSupportMRDSearchByTimeZone>true</isSupportMRDSearchByTimeZone>
+		<isSupportSearchRecordLabelByUTC>true</isSupportSearchRecordLabelByUTC>
+		<isSupportSearchPictureByUTC>true</isSupportSearchPictureByUTC>
+		<isSupportSmartSearchPictureByUTC>true</isSupportSmartSearchPictureByUTC>
+		<isSupportFindLogByUTC>true</isSupportFindLogByUTC>
+		<isSupportUploadRecordByUTC>true</isSupportUploadRecordByUTC>
+		<isSupportPlaybackByUTC>true</isSupportPlaybackByUTC>
+		<isSupportFaceDetecttionAlarmByTimeZone>true</isSupportFaceDetecttionAlarmByTimeZone>
+		<isSupportRecordSearchByTargetType>true</isSupportRecordSearchByTargetType>
+		<securityLogServer>
+			<isSupportLogServer>true</isSupportLogServer>
+		</securityLogServer>
+		<isSupportLinkToIPCWeb>false</isSupportLinkToIPCWeb>
+	</RacmCap>
+	<PTZCtrlCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportPatrols>true</isSupportPatrols>
+	</PTZCtrlCap>
+	<SmartCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportROI>false</isSupportROI>
+		<isSupportFaceDetect>true</isSupportFaceDetect>
+		<isSupportIntelliTrace>false</isSupportIntelliTrace>
+		<isSupportFieldDetection>true</isSupportFieldDetection>
+		<isSupportDefocusDetection>true</isSupportDefocusDetection>
+		<isSupportAudioDetection>true</isSupportAudioDetection>
+		<isSupportSceneChangeDetection>true</isSupportSceneChangeDetection>
+		<isSupportLineDetection>true</isSupportLineDetection>
+		<isSupportRegionEntrance>true</isSupportRegionEntrance>
+		<isSupportRegionExiting>true</isSupportRegionExiting>
+		<isSupportLoitering>true</isSupportLoitering>
+		<isSupportGroup>true</isSupportGroup>
+		<isSupportRapidMove>true</isSupportRapidMove>
+		<isSupportParking>true</isSupportParking>
+		<isSupportUnattendedBaggage>true</isSupportUnattendedBaggage>
+		<isSupportAttendedBaggage>true</isSupportAttendedBaggage>
+		<isSupportAnalysisUnitSwitch>true</isSupportAnalysisUnitSwitch>
+	</SmartCap>
+	<isSupportEhome>true</isSupportEhome>
+	<isSupportStreamingEncrypt>true</isSupportStreamingEncrypt>
+	<isSupportCloud>false</isSupportCloud>
+	<TestCap>
+		<isSupportEmailTest>true</isSupportEmailTest>
+	</TestCap>
+	<ThermalCap version="1.0"
+		xmlns="http://www.hikvision.com/ver20/XMLSchema">
+		<isSupportFireDetection>false</isSupportFireDetection>
+		<isSupportThermometry>false</isSupportThermometry>
+		<isSupportNVR>true</isSupportNVR>
+		<isSupportThermometrySchedule>false</isSupportThermometrySchedule>
+		<isSupportTemperatureSchedule>false</isSupportTemperatureSchedule>
+		<isSupportFireDetectionSchedule>false</isSupportFireDetectionSchedule>
+	</ThermalCap>
+	<isSupportGetmutexFuncErrMsg>true</isSupportGetmutexFuncErrMsg>
+	<isSupportTokenAuthenticate>true</isSupportTokenAuthenticate>
+	<isSupportStreamDualVCA>true</isSupportStreamDualVCA>
+	<isSupportIntelligentAnalysisEngines>false</isSupportIntelligentAnalysisEngines>
+	<isSupportChannelEventCap>true</isSupportChannelEventCap>
+	<isSupportTokenAuthenticate>true</isSupportTokenAuthenticate>
+	<isSupportPictureServer>true</isSupportPictureServer>
+	<isSupportInputProxyDeviceInfo>true</isSupportInputProxyDeviceInfo>
+	<isSupportEzvizIOAlarmByChannel>true</isSupportEzvizIOAlarmByChannel>
+	<isSupportSeachMutexFunction>true</isSupportSeachMutexFunction>
+</DeviceCap>
