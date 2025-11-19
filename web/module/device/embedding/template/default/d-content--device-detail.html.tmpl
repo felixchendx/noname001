@@ -1,0 +1,353 @@
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">Device</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+        <div class="col-auto">
+          <div class="btn-list">
+            <a class="btn" href="{{ $._link.back }}">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+              Back to listing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row">
+        
+        <!-- Form - Data -->
+        <div class="col-6">
+          <form id="formDevice" class="card">
+            <div class="card-body py-3">
+              <h3 class="card-title">Data</h3>
+
+              <div class="hr-text hr-text-center hr-text-spaceless mt-0 mb-3">Basic</div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="code" class="form-label required">Code</label>
+                    <input id="code" class="form-control"
+                        type="text" placeholder="code"
+                        name="code" value="{{ $._data.device.Code }}">
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="name" class="form-label required">Name</label>
+                    <input id="name" class="form-control"
+                        type="text" placeholder="name"
+                        name="name" value="{{ $._data.device.Name }}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="state" class="form-label required">State</label>
+                    <select id="state" class="form-select"
+                        name="state">
+                      <option value="active" {{ if eq $._data.device.State "active" }}selected{{ end }}>Active</option>
+                      <option value="inactive" {{ if eq $._data.device.State "inactive" }}selected{{ end }}>Inactive</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <input id="note" class="form-control"
+                        type="text" placeholder="note"
+                        name="note" value="{{ $._data.device.Note }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="hr-text hr-text-center hr-text-spaceless my-3">Hardware Connection</div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="brand" class="form-label required">Brand</label>
+                    <select id="brand" class="form-select"
+                        name="brand" >
+                      <option value="dahua" {{ if eq $._data.device.Brand "dahua" }} selected {{ end }} >Dahua</option>
+                      <option value="hikvision" {{ if eq $._data.device.Brand "hikvision" }} selected {{ end }} >Hikvision</option>
+                      <!-- <option value="huawei" {{ if eq $._data.device.Brand "huawei" }} selected {{ end }} >Huawei</option> -->
+                      <option value="panasonic-netcam" {{ if eq $._data.device.Brand "panasonic-netcam" }} selected {{ end }} >Panasonic - Network Camera</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="inputHostname" class="form-label required">Hostname</label>
+                    <div class="input-group mb-3">
+                      <select id="protocol" class="form-select" style="max-width:8rem;"
+                          name="protocol" >
+                        <option value="http" {{ if eq $._data.device.Protocol "http" }} selected {{ end }} >http://</option>
+                        <!-- <option value="https" {{ if eq $._data.device.Protocol "https" }} selected {{ end }} >https://</option> -->
+                      </select>
+                      <input id="hostname" class="form-control"
+                          type="text" placeholder="hostname / ip address"
+                          name="hostname" value="{{ $._data.device.Hostname }}"/>
+                      <input id="port" class="form-control" style="max-width:8rem;"
+                          type="text" placeholder="port"
+                          name="port" value="{{ $._data.device.Port }}"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="username" class="form-label required">Username</label>
+                    <input id="username" class="form-control"
+                        type="text" placeholder="username"
+                        name="username" value="{{ $._data.device.Username }}">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label required">Password</label>
+                    <div class="input-group input-group-flat">
+                      <input id="passwordInput" class="form-control" 
+                          type="password" placeholder="password" 
+                          name="password" value="{{ $._data.device.Password }}" autocomplete="off" />
+                      <span class="input-group-text">
+                        <a id="togglePassword" class="input-group-link">
+                          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Fallback RTSP port</label>
+                    <input id="fallback_rtsp_port" class="form-control"
+                        type="text" placeholder="fallback rtsp port"
+                        name="fallback_rtsp_port" value="{{ $._data.device.FallbackRTSPPort }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <input id="dataID" type="hidden" name="id" value="{{ $._data.device.ID }}">
+
+            <div class="card-footer py-3 d-flex">
+              <div class="btn-list">
+                <button class="btn btn-danger" {{ if $._is_add_mode }}disabled{{ end }}
+                    type="button" data-bs-toggle="modal" data-bs-target="#dlgDeleteConfirmation">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h16" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /><path d="M10 12l4 4m0 -4l-4 4" /></svg>
+                  Delete
+                </button>
+              </div>
+              <div class="btn-list ms-auto">
+                <button class="btn btn-primary"
+                    title="Save" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="post" formaction="{{ $._link.save }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+                  Save
+                </button>
+                <button id="btnSubmitDelete" style="display: none;" tabindex="-1"
+                    type="submit" formmethod="post" formaction="{{ $._link.delete }}">
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- panel - Info -->
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body py-3">
+              <h3 class="card-title">Info</h3>
+
+              <div class="hr-text hr-text-center hr-text-spaceless mt-0 mb-3">Worker</div>
+
+              <div class="row mb-2">
+                <div class="col-4">Status</div>
+                <div id="statusText" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Connection</div>
+                <div id="connectionText" class="col-8"></div>
+              </div>
+
+              <div class="hr-text hr-text-center hr-text-spaceless my-3">System</div>
+
+              <div class="row mb-2">
+                <div class="col-4">Operational Capabilities State</div>
+                <div id="opcapState" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Operational Capabilities</div>
+                <div class="col-8">
+                  <!-- op_cap row 1 -->
+                  <div class="row mb-1">
+                    <div class="col-12">
+                      <div class="row align-items-center">
+                        <div id="opcapReadDeviceInfo" class="col-auto">
+                        </div>
+                        <div class="col ps-0">Connect / read device info</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- op_cap row 2 -->
+                  <div class="row mb-1">
+                    <div class="col-6">
+                      <div class="row align-items-center">
+                        <div id="opcapReadRtspStream" class="col-auto">
+                        </div>
+                        <div class="col ps-0">Read RTSP stream</div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row align-items-center">
+                        <div id="opcapReadStreamInfo" class="col-auto">
+                        </div>
+                        <div class="col ps-0">Read stream info</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- op_cap row 3 -->
+                  <div class="row mb-1">
+                    <div class="col-12">
+                      <div class="row align-items-center">
+                        <div id="opcapReadAnalogInputChannels" class="col-auto">
+                        </div>
+                        <div class="col ps-0">Read analog input channels info</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- op_cap row 4 -->
+                  <div class="row mb-1">
+                    <div class="col-12">
+                      <div class="row align-items-center">
+                        <div id="opcapReadDigitalInputChannels" class="col-auto">
+                        </div>
+                        <div class="col ps-0">Read digital input channels info</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div id="opcapErrDetails" class="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="accordion-item">
+                    <div class="accordion-header" role="tab">
+                      <button id="opcapErrDetailsTitle" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#opcapErrDetails-1" aria-expanded="true"></button>
+                    </div>
+                    <div id="opcapErrDetails-1" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#opcapErrDetails">
+                      <div id="opcapErrDetailsBody" class="accordion-body pt-0">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hr-text hr-text-center hr-text-spaceless my-3">Hardware</div>
+
+              <div class="row mb-2">
+                <div class="col-4">Brand</div>
+                <div id="hwBrand" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Name</div>
+                <div id="hwName" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Model</div>
+                <div id="hwModel" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Type</div>
+                <div id="hwType" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Analog Channels</div>
+                <div id="hwAnalogChannelsCount" class="col-8"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Digital Channels</div>
+                <div id="hwDigitalChannelsCount" class="col-8"></div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div class="btn-list"></div>
+              <div class="btn-list ms-auto">
+                <div id="reloadWarning" class="reload-warning">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-alert-triangle reload-warning-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 1.67c.955 0 1.845 .467 2.39 1.247l.105 .16l8.114 13.548a2.914 2.914 0 0 1 -2.307 4.363l-.195 .008h-16.225a2.914 2.914 0 0 1 -2.582 -4.2l.099 -.185l8.11 -13.538a2.914 2.914 0 0 1 2.491 -1.403zm.01 13.33l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -7a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" /></svg>
+                  <span class="reload-warning-text">
+                    Warning!
+                    <br>Reloading will cause disruption to other modules that depend on this device!
+                  </span>
+                </div>
+                <button id="reloadDevice" class="btn btn-warning reload-button">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgDeleteConfirmation" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg  xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div id="deleteConfirmationMessage" class="text-secondary">Do you really want to delete this data ?</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col">
+              <a class="btn w-100" data-bs-dismiss="modal" href="#">
+                Cancel
+              </a>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger w-100"
+                  onclick="nsCt.fn_doSubmitDelete();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // nsContentData
+  const nsCD = {};
+  nsCD.isAddMode = {{ $._is_add_mode }};
+  nsCD.isEditMode = {{ $._is_edit_mode }};
+</script>

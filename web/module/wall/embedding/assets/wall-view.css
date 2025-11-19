@@ -1,0 +1,130 @@
+.page-wrapper.wall-view .page-body {
+  --tblr-page-padding-y: 0.5rem;
+}
+
+.page-wrapper.wall-view .container-xl {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.page-wrapper.wall-view .btn {
+  --fu-temp-color: #999999;
+  --fu-temp-color-fg: #666666;
+
+  --tblr-btn-color: var(--fu-temp-color);
+  --tblr-btn-bg: transparent;
+  --tblr-btn-border-color: var(--fu-temp-color);
+  --tblr-btn-hover-color: #FFFFFF;
+  --tblr-btn-hover-border-color: transparent;
+  --tblr-btn-hover-bg: var(--fu-temp-color-fg);
+  --tblr-btn-active-color: var(--fu-temp-color-fg);
+  --tblr-btn-active-bg: var(--fu-temp-color);
+  --tblr-btn-disabled-color: var(--fu-temp-color);
+  --tblr-btn-disabled-border-color: var(--fu-temp-color);
+}
+
+.page-wrapper.wall-view .wall-tiling {
+  --tblr-page-padding: 0px;
+}
+
+.page-wrapper.wall-view .wall-panel .card-header {
+  --tblr-card-cap-padding-y: 0.25rem;
+  --tblr-card-cap-padding-x: 0.25rem;
+}
+.page-wrapper.wall-view .wall-panel .card-body {
+  --tblr-card-spacer-y: 0.25rem;
+  --tblr-card-spacer-x: 0.25rem;
+}
+
+.page-wrapper.wall-view .wall-panel .wall-panel-status {
+  --tblr-status-indicator-size: 2rem;
+}
+
+.page-wrapper.wall-view .wall-panel-status.status-off {
+  --tblr-status-color: black;
+  --tblr-status-color-rgb: rgb(1,1,1);
+}
+
+.page-wrapper.wall-view .wall-panel-title {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.page-wrapper.wall-view .wall-panel .btn-list {
+  --tblr-list-gap: 0.2rem;
+  --tblr-btn-font-size: 0.5rem;
+}
+
+.page-wrapper.wall-view .wall-panel .btn-icon {
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.page-wrapper.wall-view .wall-sidebar {
+  --tblr-page-padding: 0px;
+
+  height: 100%;
+  flex-direction: column;
+}
+
+.page-wrapper.wall-view .wall-sidebar .wall-nav {
+  --tblr-card-cap-padding-y: 0.25rem;
+  --tblr-card-cap-padding-x: 0.25rem;
+}
+.page-wrapper.wall-view .wall-sidebar .wall-nav .btn-list {
+  --tblr-list-gap: 0.2rem;
+  --tblr-btn-font-size: 0.5rem;
+}
+.page-wrapper.wall-view .wall-sidebar .wall-nav .btn-list .btn {
+  min-height: 32px;
+  height: 32px;
+}
+
+.page-wrapper.wall-view .wall-sidebar .wall-info .card-title {
+  margin: 0 0 0.25rem;
+}
+.page-wrapper.wall-view .wall-sidebar .wall-info .card-subtitle {
+  margin-top: 0.25rem;
+}
+
+.page-wrapper.wall-view .wall-sidebar > :last-child {
+  flex-grow: 1;
+}
+.page-wrapper.wall-view .wall-sidebar .wall-tabs {
+  height: 100%;
+}
+
+/* === topbar variants === */
+.wall-view-topbar {
+  min-height: 40px;
+  height: 40px;
+  padding: 0;
+}
+.wall-view-topbar .mr-auto {
+  margin-right: auto !important;
+}
+/* from preview-navbar-devices */
+.wall-view-topbar .ccenterr {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.wall-view-topbar .ml-auto {
+  margin-left: auto !important;
+}
+
+.wall-view-topbar .btn-list {
+  --tblr-list-gap: 0.2rem;
+  --tblr-btn-font-size: 0.5rem;
+}
+.wall-view-topbar .btn-list .btn {
+  min-height: 32px;
+  height: 32px;
+  margin-top: 4px;
+}

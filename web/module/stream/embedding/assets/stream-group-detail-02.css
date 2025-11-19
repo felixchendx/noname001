@@ -1,0 +1,167 @@
+/*
+  in tabler.min.css v1.0.0-beta20
+  the original var use '--tblr-text-secondary-rgb'
+  but that var is never declared (might be minor bug)
+
+  in tabler.min.css v1.0.0
+  the var is changed to '--tblr-secondary-rgb'
+
+  TODO: migrate ALL markup to v1.0.0
+        some of current markup breaks
+*/
+.list-group-item:active, .list-group-item:focus, .list-group-item:hover {
+  background-color: rgba(var(--tblr-secondary-rgb),.08);
+
+}
+.list-group-item.active {
+  background-color: rgba(var(--tblr-secondary-rgb),.08);
+}
+
+
+.list-group-item.faux-selection:hover {
+  cursor: pointer;
+}
+.list-group-item.faux-selection.active:hover {
+  cursor: default;
+}
+
+.item-toggle-state {
+  width: 100%;
+  
+  /* taken from same var in v1.0.0 */
+  --tblr-form-valid-color: #82d18f;
+  --tblr-form-invalid-color: #e68888;
+}
+.item-toggle-state.item-stream-inactive {
+  /* copied from btn-danger in v1.0.0-beta20 */
+  /* --tblr-btn-border-color: var(--tblr-form-invalid-color); */
+  --tblr-btn-hover-border-color: var(--tblr-form-valid-color);
+  /* --tblr-btn-active-border-color: transparent; */
+  /* --tblr-btn-color: var(--tblr-form-invalid-color); */
+  /* --tblr-btn-bg: transparent; */
+  --tblr-btn-hover-color: var(--tblr-success-fg);
+  --tblr-btn-hover-bg: var(--tblr-form-valid-color);
+  --tblr-btn-active-color: var(--tblr-success-fg);
+  --tblr-btn-active-bg: rgba(var(--tblr-form-valid-color), .8);
+  /* --tblr-btn-disabled-bg: transparent; */
+  /* --tblr-btn-disabled-color: transparent; */
+  /* --tblr-btn-box-shadow: var(--tblr-box-shadow-input) */
+}
+.item-toggle-state.item-stream-active {
+  /* copied from btn-danger in v1.0.0-beta20 */
+  --tblr-btn-border-color: transparent;
+  --tblr-btn-hover-border-color: var(--tblr-form-invalid-color);
+  --tblr-btn-active-border-color: transparent;
+  --tblr-btn-color: var(--tblr-success-fg);
+  --tblr-btn-bg: var(--tblr-green);
+  --tblr-btn-hover-color: var(--tblr-form-invalid-color);
+  --tblr-btn-hover-bg: transparent;
+  --tblr-btn-active-color: var(--tblr-success-fg);
+  --tblr-btn-active-bg: rgba(var(--tblr-form-invalid-color), .8);
+  /* --tblr-btn-disabled-bg: var(--tblr-form-valid-color); */
+  /* --tblr-btn-disabled-color: var(--tblr-success-fg); */
+  /* --tblr-btn-box-shadow: var(--tblr-box-shadow-input) */
+}
+
+.todo-temp-hide {
+  display: none;
+}
+
+.dropdown-confirmation {
+  min-width: 0;
+}
+.dropdown-confirmation-title {
+  font-weight: bold;
+  padding: 4px 12px;
+}
+.dropdown-confirmation-menu {
+  padding: 4px 8px;
+}
+.dropdown-confirmation-button {
+  width: 48px;
+  font-weight: bold;
+  margin: 0px 4px;
+}
+
+
+.stream-item-container {
+  min-height: 56rem;
+  height: 56rem;
+}
+.sil-search {
+  width: 12rem;
+}
+.sil-listing {
+  max-height: 45rem;
+}
+.sil-listing-offset-message {
+  max-height: 41rem !important;
+}
+.item-thumbnail-container {
+  width: 204px;
+  height: 154px;
+  border: 1px solid darkgray;
+}
+.item-thumbnail {
+  padding: 4px;
+}
+.item-delete, .item-edit {
+  min-width: 64px;
+}
+
+.stream-item-view-container {
+  min-height: 20rem;
+}
+
+.tab-add-stream-item {
+  margin: -1.25rem;
+}
+.add-stream-item-container {
+  border: none;
+}
+.fsimd-action-group {
+  align-self: end;
+}
+
+.dcp-preview-container {
+  min-height: 20rem;
+}
+.dcp-preview-temp-feedback {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.dl-search {
+  width: 12rem;
+}
+.device-listing {
+  max-height: 21rem;
+}
+.device-channel-listing {
+  max-height: 21rem;
+}
+
+.fsie-action-group {
+  align-self: end;
+}
+
+.fsif-action-group {
+  align-self: end;
+}
+
+.devchan-thumbnail-container {
+  width: 172px;
+  height: 128px;
+  border: 1px solid darkgray;
+}
+.devchan-thumbnail {
+  padding: 4px;
+}
+.devchan-status-text {
+  margin-bottom: 2px;
+  margin-right: 4px;
+}
+.devchan-select {
+  width: 120px;
+}

@@ -1,0 +1,279 @@
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">wall</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+        <div class="col-auto">
+          <div class="btn-list">
+            <button id="navToWallListing" class="btn">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+              Back to listing
+            </button>
+            <button id="navToWallView" class="btn">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-border-all"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M4 12l16 0" /><path d="M12 4l0 16" /></svg>
+              Go to view
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-cards">
+
+        <!-- Form - Wall -->
+        <div class="col-12">
+          <form id="formWall" class="card">
+            <div class="card-body py-3">
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="code" class="form-label required">Code</label>
+                    <input id="code" class="form-control"
+                        type="text" placeholder="code"
+                        name="code" value="{{ $._data.wall.Code }}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="name" class="form-label required">Name</label>
+                    <input id="name" class="form-control"
+                        type="text" placeholder="name"
+                        name="name" value="{{ $._data.wall.Name }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="state" class="form-label required">State</label>
+                    <select id="state" class="form-select"
+                        name="state">
+                      <option value="active" {{ if eq $._data.wall.State "active" }}selected{{ end }}>Active</option>
+                      <option value="inactive" {{ if eq $._data.wall.State "inactive" }}selected{{ end }}>Inactive</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <input id="note" class="form-control"
+                        type="text" placeholder="note"
+                        name="note" value="{{ $._data.wall.Note }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="wall_layout" class="form-label">Wall Layout</label>
+                    <select id="wall_layout" class="form-select"
+                        name="wall_layout_id">
+                      {{ if $._data.wall_layout }}
+                      {{ range $idx, $item := $._data.wall_layout }}
+                      <option value="{{ $item.ID }}" {{ if eq $._data.wall.WallLayoutID $item.ID }}selected{{ end }}>{{ $item.Code }} - {{ $item.Name }}</option>
+                      {{ end }}
+                      {{ end }}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div>
+                <button class="btn btn-danger" {{ if $._is_add_mode }}disabled{{ end }}
+                    type="button" data-bs-toggle="modal" data-bs-target="#dlgDeleteConfirmation">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h16" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /><path d="M10 12l4 4m0 -4l-4 4" /></svg>
+                  Delete
+                </button>
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-primary"
+                    title="Save" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="post" formaction="{{ $._link.save }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+                  Save
+                </button>
+                <button id="submitDelete" style="display: none;" tabindex="-1"
+                    type="submit" formmethod="post" formaction="{{ $._link.delete }}"></button>
+              </div>
+            </div>
+
+            <input type="hidden" name="id" value="{{ $._data.wall.ID }}">
+          </form>
+        </div>
+
+        <!-- Wall visz -->
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header py-3">
+              <h3 class="card-title">Wall layout</h3>
+            </div>
+            <div id="wallVisz" class="card-body py-3">
+            </div>
+          </div>
+        </div>
+
+        <!-- Wall item listing -->
+        <div class="col-8">
+          <div class="card">
+            <div class="card-header py-3">
+              <h3 class="card-title">Wall stream setup</h3>
+            </div>
+
+            <div id="wallItemListing" class="list-group list-group-flush list-group-hoverable overflow-auto wall-item-listing">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgDeleteConfirmation" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div class="text-secondary">Do you really want to delete this data ?</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col">
+              <a class="btn w-100" data-bs-dismiss="modal" href="#">
+                Cancel
+              </a>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger w-100"
+                  onclick="nsCt.fn_doSubmitDelete();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgLinkStream" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-link-stream" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="dlgLS_dialogTitle" class="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+
+      <div class="modal-body modal-body-link-stream">
+        <div class="container-xl px-0">
+          <div class="row">
+            <div class="col-4 pe-0">
+              <!-- row - nodes -->
+              <div class="row">
+                <div class="col">
+                  <div class="card mb-2">
+                    <div class="card-header px-3 py-2">
+                      <div id="dlgLS_nodeListingTitle" class="card-title">Nodes</div>
+                      <div class="card-actions btn-actions align-items-center">
+                        <div class="me-1">
+                          <input id="dlgLS_nodeListingSearch" type="text" class="form-control form-control-sm node-listing-search" placeholder="search node..." aria-label="search">
+                        </div>
+                        <button id="dlgLS_nodeListingReload" class="btn-action">
+                          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-reload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" /><path d="M20 4v5h-5" /></svg>
+                        </button>
+                      </div>
+                    </div>
+    
+                    <div id="dlgLS_nodeListing" class="list-group list-group-flush list-group-hoverable overflow-auto node-listing">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- row - preview -->
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header px-3 py-2">
+                      <div id="dlgLS_streamPreviewTitle" class="card-title">Stream Preview</div>
+                      <div class="card-actions btn-actions align-items-center">
+                        <button id="dlgLS_streamPreviewStop" class="btn-action">
+                          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-player-stop"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 4h-10a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3 -3v-10a3 3 0 0 0 -3 -3z" /></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body py-2">
+                      <fu-default-live-stream id="dlgLS_streamPreview" data-fu-src=""></fu-default-live-stream>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- streams -->
+            <div class="col-8 pe-0">
+              <div class="card">
+                <div class="card-header py-2">
+                  <div id="dlgLS_streamListingTitle" class="card-title">Streams</div>
+                  <div class="card-actions btn-actions align-items-center">
+                    <div class="me-1">
+                      <input id="dlgLS_streamListingSearch" type="text" class="form-control form-control-sm stream-listing-search" placeholder="search stream..." aria-label="search">
+                    </div>
+                    <button id="dlgLS_streamListingReload" class="btn-action">
+                      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-reload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" /><path d="M20 4v5h-5" /></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="dlgLS_streamListing" class="list-group list-group-flush list-group-hoverable overflow-auto stream-listing">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn ms-auto" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // nsContentData
+  nsCD = {};
+  nsCD.isAddMode = {{ $._is_add_mode }};
+  nsCD.isEditMode = {{ $._is_edit_mode }};
+
+  nsCD.nav_wallListing = {{ $._link.wall_listing }};
+  nsCD.nav_wallView = {{ $._link.wall_view }};
+  nsCD.ws_uri = {{ $._link.ws }};
+</script>

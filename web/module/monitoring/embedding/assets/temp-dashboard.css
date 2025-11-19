@@ -1,0 +1,29 @@
+:root {
+  --visz-highlight-color: var(--tblr-highlight-bg);
+}
+
+
+.list-group {
+  max-height: 40rem;
+}
+.list-group > .list-group-item:nth-of-type(2n) {
+  background-color: rgba(var(--tblr-secondary-rgb), .06);
+}
+.list-group-item:active, .list-group-item:focus, .list-group-item:hover {
+  background-color: rgba(var(--tblr-secondary-rgb), .08);
+}
+.list-group-item .faux-space {
+  width: 40px;
+  padding: 0 8px 0 8px;
+};
+
+/* ????????????? */
+.status-indicator.status-off {
+  --tblr-status-color: black;
+  --tblr-status-color-rgb: rgb(1,1,1);
+}
+.status-indicator.status-off {
+  --tblr-status-color: black !important;
+  --tblr-status-color-rgb: rgb(1,1,1) !important;
+}
+/* ????????????? */

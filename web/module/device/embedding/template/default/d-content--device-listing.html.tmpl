@@ -1,0 +1,244 @@
+<!-- ------------------------- VVV PAGE CONTENT VVV ------------------------ -->
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">device</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-deck row-cards">
+
+        <!-- Form - Filters -->
+        <div class="col-12">
+          <form id="filters" class="card">
+            <div class="row">
+              <div class="col-6">
+                <div class="card-header py-3">
+                  <h3 class="card-title">Basic Filters</h3>
+                </div>
+
+                <div class="card-body py-3">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label for="code" class="form-label">Code</label>
+                        <input id="code" class="form-control" 
+                            type="text" placeholder="code" 
+                            name="code" value="{{ $._datatable.device_listing.filter.code }}">
+                      </div>
+                    </div>
+
+                    <div class="col-8">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" class="form-control" 
+                            type="text" placeholder="name" 
+                            name="name" value="{{ $._datatable.device_listing.filter.name }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label for="state" class="form-label">State</label>
+                        <select id="state" class="form-select" name="state">
+                          <option value="" {{ if eq $._datatable.device_listing.filter.state "" }}selected{{ end }}>All</option>
+                          <option value="active" {{ if eq $._datatable.device_listing.filter.state "active" }}selected{{ end }}>Active</option>
+                          <option value="inactive" {{ if eq $._datatable.device_listing.filter.state "inactive" }}selected{{ end }}>Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card-header py-3">
+                  <h3 class="card-title">Device Filters</h3>
+                </div>
+                <div class="card-body py-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="hostname" class="form-label">Hostname</label>
+                        <input id="hostname" class="form-control" 
+                            type="text" placeholder="hostname / ip address" 
+                            name="hostname" value="{{ $._datatable.device_listing.filter.hostname }}">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input id="username" class="form-control" 
+                            type="text" placeholder="username"  
+                            name="username" value="{{ $._datatable.device_listing.filter.username }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="brand" class="form-label">Brand</label>
+                        <select id="brand" class="form-select" name="brand">
+                          <option value="" {{ if eq $._datatable.device_listing.filter.brand "" }}selected{{ end }}>All</option>
+                          <option value="dahua" {{ if eq $._datatable.device_listing.filter.brand "dahua" }}selected{{ end }}>Dahua</option>
+                          <option value="hikvision" {{ if eq $._datatable.device_listing.filter.brand "hikvision" }}selected{{ end }}>Hikvision</option>
+                          <!-- <option value="huawei" {{ if eq $._datatable.device_listing.filter.brand "huawei" }}selected{{ end }}>Huawei</option> -->
+                          <option value="panasonic-netcam" {{ if eq $._datatable.device_listing.filter.brand "panasonic-netcam" }}selected{{ end }}>Panasonic - Network Camera</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div>
+                <button class="btn btn-primary" 
+                    title="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="get" formaction="">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /></svg>
+                  Search
+                </button>
+                <a class="btn" tabindex="-1" 
+                    title="Reset filters" data-bs-toggle="tooltip" data-bs-placement="top"
+                    href="{{ $._link.device_listing }}">
+                  Reset Filters
+                </a>
+              </div>
+              <div class="ms-auto">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- datatable -->
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header py-3">
+              <h3 class="card-title">Devices</h3>
+              <div class="ms-auto">
+                <a class="btn btn-primary" 
+                    title="Add new item" data-bs-toggle="tooltip" data-bs-placement="top"
+                    href="{{ $._link.new_device }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M5 12l14 0" /> </svg>
+                  Add new item
+                </a>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table id="datatable" class="table card-table table-vcenter">
+                <thead>
+                  <tr>
+                    <th class="text-nowrap">Code</th>
+                    <th class="text-nowrap">Name</th>
+                    <th class="text-nowrap">State</th>
+                    <th class="text-nowrap">Note</th>
+
+                    <th class="text-nowrap">Protocol</th>
+                    <th class="text-nowrap">Hostname</th>
+                    <th class="text-nowrap">Port</th>
+                    <th class="text-nowrap">Username</th>
+                    <th class="text-nowrap">Brand</th>
+                    <th class="text-nowrap">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ if $._datatable.device_listing.rows }}
+                  {{ range $idx, $item := $._datatable.device_listing.rows }}
+                  <tr>
+                    <td>{{ $item.device_code }}</td>
+                    <td>{{ $item.device_name }}</td>
+                    <td>{{ $item.device_state }}</td>
+                    <td>{{ $item.device_note }}</td>
+                    
+                    <td>{{ $item.device_protocol }}</td>
+                    <td>{{ $item.device_hostname }}</td>
+                    <td>{{ $item.device_port }}</td>
+                    <td>{{ $item.device_username }}</td>
+                    <td>{{ $item.device_brand }}</td>
+
+                    <td>
+                      <div class="btn-list" style="--tblr-list-gap: 0.2rem;">
+                        <a class="btn btn-primary btn-icon"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Device"
+                            href="{{ $item.link_detail }}">
+                          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-pencil"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {{ end }}
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card-footer py-3 d-flex align-items-center">
+              <span style="padding-right: 8px;">Showing</span>
+              <select id="perpage" class="form-select" style="width: 80px; padding:8px 0 8px 8px;">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              {{ if $._datatable.device_listing.pg }}
+              <span style="padding-left: 8px;">out of {{ $._datatable.device_listing.pg.TotalData }} data</span>
+              {{ else }}
+              <span style="padding-left: 8px;">out of _ data</span>
+              {{ end }}
+
+              {{ if $._datatable.device_listing.pg }}
+              <ul class="pagination m-0 ms-auto">
+                <li class="page-item">
+                  <a class="page-link" tabindex="-1" href="{{ $._datatable.device_listing.pg.FirstLink.Link }}">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevrons-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 7l-5 5l5 5" /><path d="M17 7l-5 5l5 5" /></svg>
+                  </a>
+                </li>
+                <li class="page-item" style="margin-right: 8px;">
+                  <a class="page-link" tabindex="-1" href="{{ $._datatable.device_listing.pg.PrevLink.Link }}">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                  </a>
+                </li>
+
+                {{ range $midIdx, $midLink := $._datatable.device_listing.pg.MidLinks }}
+                <li class="page-item {{ if $midLink.IsActive }}active{{ end }}">
+                  <a class="page-link" tabindex="-1" href="{{ $midLink.Link }}">{{ $midLink.Name }}</a>
+                </li>
+                {{ end }}
+
+                <li class="page-item" style="margin-left: 8px;">
+                  <a class="page-link" tabindex="-1" href="{{ $._datatable.device_listing.pg.NextLink.Link }}">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" tabindex="-1" href="{{ $._datatable.device_listing.pg.LastLink.Link }}">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevrons-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7l5 5l-5 5" /><path d="M13 7l5 5l-5 5" /></svg>
+                  </a>
+                </li>
+              </ul>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------- ^^^ PAGE CONTENT ^^^ ------------------------ -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+    nsMain.focusOn('code');
+  });
+</script>

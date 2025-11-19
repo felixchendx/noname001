@@ -1,0 +1,175 @@
+:root {
+  --visz-highlight-color: var(--tblr-highlight-bg);
+}
+
+/* === wall layout visz stuffs === */
+.wall-visz-item-small {
+  height: 4rem;
+  border: 1px solid black;
+
+  overflow: hidden;
+}
+.wall-visz-item-small.invisible {
+  border: none !important;
+}
+.wall-visz-item-small.highlight {
+  background-color: var(--visz-highlight-color) !important;
+}
+.wall-visz-item-small:hover {
+  background-color: var(--visz-highlight-color) !important;
+}
+
+.wall-visz-d4-item {
+  height: 8rem;
+  border: 1px solid black;
+}
+.wall-visz-d4-item.highlight {
+  background-color: var(--visz-highlight-color) !important;
+}
+
+.wall-visz-d1b7s-item-big {
+  height: 12.5rem;
+  border: 1px solid black;
+}
+.wall-visz-d1b7s-item-big.highlight {
+  background-color: var(--visz-highlight-color) !important;
+}
+.wall-visz-d1b7s-item-big:hover {
+  background-color: var(--visz-highlight-color) !important;
+}
+
+.wall-visz-d1b7s-item-small {
+  height: 4rem;
+  border: 1px solid black;
+
+  overflow: hidden;
+}
+.wall-visz-d1b7s-item-small.highlight {
+  background-color: var(--visz-highlight-color) !important;
+}
+.wall-visz-d1b7s-item-small:hover {
+  background-color: var(--visz-highlight-color) !important;
+}
+
+/* === wall item listing stuffs === */
+.wall-item-listing {
+  max-height: 50rem;
+}
+.wall-item-listing > .wall-item:nth-of-type(2n) {
+  background-color: rgba(var(--tblr-secondary-rgb), .06);
+}
+
+.wall-item.highlight {
+  background-color: var(--visz-highlight-color) !important;
+}
+.wall-item:hover {
+  background-color: var(--visz-highlight-color) !important;
+}
+
+.wall-item .status-indicator {
+  margin-top: -4px;
+}
+
+.wall-item-unlink, .wall-item-link {
+  min-width: 80px;
+}
+
+.dropdown-confirmation {
+  min-width: 0;
+}
+.dropdown-confirmation-title {
+  font-weight: bold;
+  padding: 4px 12px;
+}
+.dropdown-confirmation-menu {
+  padding: 4px 8px;
+}
+.dropdown-confirmation-button {
+  width: 48px;
+  font-weight: bold;
+  margin: 0px 4px;
+}
+
+
+/* === dlg link stream stuffs === */
+.modal-link-stream {
+  margin-right: 1.75rem;
+  --tblr-modal-width: 1560px;
+}
+.modal-body-link-stream {
+  min-height: 36rem;
+  max-height: 48rem;
+}
+
+.status-indicator {
+  --tblr-status-indicator-size: 2rem;
+}
+.status-indicator.status-off {
+  --tblr-status-color: black;
+  --tblr-status-color-rgb: rgb(1,1,1);
+}
+
+.node-listing-search {
+  width: 200px;
+}
+
+.node-listing {
+  min-height: 20rem;
+  max-height: 20rem;
+}
+.node-listing > .node-item:nth-of-type(2n) {
+  background-color: rgba(var(--tblr-secondary-rgb), .06);
+}
+
+.node-item:active, .node-item:focus, .node-item:hover {
+  background-color: rgba(var(--tblr-secondary-rgb), .08);
+}
+
+.node-item.faux-selection:hover {
+  cursor: pointer;
+}
+.node-item.faux-selection.active {
+  background-color: aliceblue;
+}
+.node-item.faux-selection.active:hover {
+  cursor: default;
+}
+.node-item .status-indicator {
+  margin-top: -4px;
+}
+
+.stream-listing-search {
+  width: 280px;
+}
+
+.stream-listing {
+  max-height: 42rem;
+}
+.stream-listing > .stream-item:nth-of-type(2n) {
+  background-color: rgba(var(--tblr-secondary-rgb), .06);
+}
+
+.stream-item:active, .stream-item:focus, .stream-item:hover {
+  background-color: rgba(var(--tblr-secondary-rgb), .08);
+}
+
+.stream-item-thumbnail-container {
+  width: 204px;
+  height: 154px;
+  border: 1px solid darkgray;
+}
+.stream-item-thumbnail {
+  padding: 4px;
+}
+
+.stream-item .status-indicator {
+  margin-top: -4px;
+}
+
+.stream-item-link {
+  min-width: 80px;
+}
+.stream-item-preview {
+  min-width: 80px;
+  min-height: 60px;
+}

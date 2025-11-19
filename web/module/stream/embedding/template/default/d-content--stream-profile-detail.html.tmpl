@@ -1,0 +1,224 @@
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">Stream</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+        <div class="col-auto">
+          <div class="btn-list">
+            <a class="btn" href="{{ $._link.back }}">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+              Back to listing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row">
+
+        <!-- Form - Filters -->
+        <div class="col-12">
+          <form id="formStreamProfile" class="card">
+            <div class="row">
+              <div class="col-6">
+                <div class="card-header py-3">
+                  <h3 class="card-title">General Information</h3>
+                </div>
+                <div class="card-body py-3">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label for="code" class="form-label required">Code</label>
+                        <input id="code" class="form-control"
+                            type="text" placeholder="code"
+                            name="code" value="{{ $._data.sp.Code }}">
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="mb-3">
+                        <label for="name" class="form-label required">Name</label>
+                        <input id="name" class="form-control"
+                            type="text" placeholder="name"
+                            name="name" value="{{ $._data.sp.Name }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label for="state" class="form-label required">State</label>
+                        <select id="state" class="form-select"
+                            name="state">
+                          <option value="active" {{ if eq $._data.sp.State "active" }}selected{{ end }}>Active</option>
+                          <option value="inactive" {{ if eq $._data.sp.State "inactive" }}selected{{ end }}>Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label for="note" class="form-label">Note</label>
+                        <input id="note" class="form-control"
+                            type="text" placeholder="note"
+                            name="note" value="{{ $._data.sp.Note }}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="card-header py-3">
+                  <h3 class="card-title">Target Video</h3>
+                </div>
+                <div class="card-body py-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetVideoCompression" class="form-label required">Compression (%)</label>
+                        <input id="targetVideoCompression" class="form-control"
+                            type="number" placeholder="Compression"
+                            name="targetVideoCompression" value="{{ $._data.sp.TargetVideoCompression }}">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetVideoBitrate" class="form-label required">Min Bitrate (bit/second)</label>
+                        <input id="targetVideoBitrate" class="form-control"
+                            type="number" placeholder="Min Bitrate"
+                            name="targetVideoBitrate" value="{{ $._data.sp.TargetVideoBitrate }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetVideoCodec" class="form-label required">Codec</label>
+                        <select id="targetVideoCodec" class="form-select"
+                            name="targetVideoCodec">
+                          <option value="h264" {{ if eq $._data.sp.TargetVideoCodec "h264" }}selected{{ end }}>H264</option>
+                          <option value="h265" {{ if eq $._data.sp.TargetVideoCodec "h265" }}selected{{ end }}>H265</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="card-header py-3">
+                  <h3 class="card-title">Target Audio</h3>
+                </div>
+                <div class="card-body py-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetAudioCompression" class="form-label required">Compression (%)</label>
+                        <input id="targetAudioCompression" class="form-control"
+                            type="number" placeholder="Compression"
+                            name="targetAudioCompression" value="{{ $._data.sp.TargetAudioCompression }}">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetAudioBitrate" class="form-label required">Min Bitrate (bit/second)</label>
+                        <input id="targetAudioBitrate" class="form-control"
+                            type="number" placeholder="Min Bitrate"
+                            name="targetAudioBitrate" value="{{ $._data.sp.TargetAudioBitrate }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label for="targetAudioCodec" class="form-label required">Codec</label>
+                        <select id="targetAudioCodec" class="form-select"
+                            name="targetAudioCodec">
+                          <option value="aac" {{ if eq $._data.sp.TargetAudioCodec "aac" }}selected{{ end }}>AAC</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div class="btn-list">
+                <button class="btn btn-danger" {{ if $._is_add_mode }}disabled{{ end }}
+                    type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationDialog">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h16" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /><path d="M10 12l4 4m0 -4l-4 4" /></svg>
+                  Delete
+                </button>
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-primary"
+                    title="Save" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="post" formaction="{{ $._link.save }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+                  Save
+                </button>
+                <button id="btnSubmitDelete" style="display: none;" tabindex="-1"
+                    type="submit" formmethod="post" formaction="{{ $._link.delete }}">
+                </button>
+              </div>
+            </div>
+
+            <input type="hidden" name="id" value="{{ $._data.sp.ID }}">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="deleteConfirmationDialog" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg  xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div id="deleteConfirmationMessage" class="text-secondary">Do you really want to delete this data ?</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col">
+              <a class="btn w-100" data-bs-dismiss="modal" href="#">
+                Cancel
+              </a>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger w-100"
+                  onclick="nsCt.fn_doSubmitDelete();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

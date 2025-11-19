@@ -1,0 +1,17 @@
+.reload-warning {
+  display: flex;
+  align-items: center;
+}
+.reload-warning-icon {
+  height: 40px;
+  width: 40px;
+
+  color: var(--tblr-warning);
+}
+.reload-warning-text {
+  padding-left: 4px;
+}
+
+.reload-button {
+  width: 160px;
+}

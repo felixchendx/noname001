@@ -1,0 +1,367 @@
+<div class="page-wrapper">
+  <!-- Page Header -->
+  <div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <div class="page-pretitle">Stream</div>
+          <h2 class="page-title">{{ $._title }}</h2>
+        </div>
+        <div class="col-auto">
+          <div class="btn-list">
+            <a class="btn" href="{{ $._link.back }}">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+              Back to listing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-cards">
+
+        <!-- Form - Stream Group -->
+        <div class="col-12">
+          <form id="formStreamGroup" class="card">
+            <div class="card-body py-3">
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="code" class="form-label required">Code</label>
+                    <input id="code" class="form-control"
+                        type="text" placeholder="code"
+                        name="code" value="{{ $._data.stream_group.Code }}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="name" class="form-label required">Name</label>
+                    <input id="name" class="form-control"
+                        type="text" placeholder="name"
+                        name="name" value="{{ $._data.stream_group.Name }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-3">
+                    <label for="state" class="form-label required">State</label>
+                    <select id="state" class="form-select"
+                        name="state">
+                      <option value="active" {{ if eq $._data.stream_group.State "active" }}selected{{ end }}>Active</option>
+                      <option value="inactive" {{ if eq $._data.stream_group.State "inactive" }}selected{{ end }}>Inactive</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <input id="note" class="form-control"
+                        type="text" placeholder="note"
+                        name="note" value="{{ $._data.stream_group.Note }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="streamProfile" class="form-label required">Stream Profile</label>
+                    <select id="streamProfile" class="form-select"
+                        name="streamProfile">
+                      {{ if $._data.stream_profile }}
+                      {{ range $idx, $item := $._data.stream_profile }}
+                      <option value="{{ $item.ID }}" {{ if eq $._data.stream_group.StreamProfileID $item.ID }}selected{{ end }}>{{ $item.Code }}</option>
+                      {{ end }}
+                      {{ end }}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer py-3 d-flex">
+              <div>
+                {{ if $._is_edit_mode }}
+                <button class="btn btn-danger"
+                    type="button" data-bs-toggle="modal" data-bs-target="#dlgDeleteConfirmation">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h16" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /><path d="M10 12l4 4m0 -4l-4 4" /></svg>
+                  Delete
+                </button>
+                {{ end }}
+              </div>
+              <div class="ms-auto">
+                <button class="btn btn-primary"
+                    title="Save" data-bs-toggle="tooltip" data-bs-placement="top"
+                    type="submit" formmethod="post" formaction="{{ $._link.save }}">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+                  Save
+                </button>
+                <button id="btnSubmitDelete" style="display: none;" tabindex="-1"
+                    type="submit" formmethod="post" formaction="{{ $._link.delete }}"></button>
+              </div>
+            </div>
+
+            <input type="hidden" name="id" value="{{ $._data.stream_group.ID }}">
+          </form>
+        </div>
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header py-3">
+              <h3 class="card-title">Stream Items</h3>
+              {{ if $._is_edit_mode }}
+              <div class="ms-auto">
+                <button class="btn btn-primary"
+                    type="button" data-bs-toggle="modal" data-bs-target="#dlgStreamItem" title="Add stream item"
+                    onclick="nsDSI.fn_onOpenDialog({}, true);">
+                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                  Add new item
+                </button>
+              </div>
+              {{ end }}
+            </div>
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>State</th>
+                    <th>Note</th>
+
+                    <th>Source Type</th>
+
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ if $._is_edit_mode }}
+                  {{ range $idx, $item := $._datatable.si_listing.rows }}
+                  <tr>
+                    <td>{{ $item.Code }}</td>
+                    <td>{{ $item.Name }}</td>
+                    <td>{{ $item.State }}</td>
+                    <td>{{ $item.Note }}</td>
+
+                    <td>{{ $item.SourceType }}</td>
+                    <td>
+                      <a class="btn btn-primary btn-icon"
+                          type="button" data-bs-toggle="modal" data-bs-target="#dlgStreamItem" title="Edit stream item"
+                          onclick="nsDSI.fn_onOpenDialog({{ $item }}, false);">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-pencil"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg>
+                      </a>
+                      <a class="btn btn-icon btn-warning"
+                          type="button" data-bs-toggle="modal" title="Remove stream item"
+                          onclick="nsDSI.fn_onRemoveStreamItem({{ $item.ID }});">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
+                      </a>
+                    </td>
+                  </tr>
+                  {{ end }}
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgDeleteConfirmation" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div class="text-secondary">Do you really want to delete this data ?</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col">
+              <a class="btn w-100" data-bs-dismiss="modal" href="#">
+                Cancel
+              </a>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger w-100"
+                  onclick="nsCt.fn_doSubmitDelete();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dlgStreamItem" tabindex="-1">
+  <div class="modal-dialog modal-xl" style="margin-right: 1.75rem; --tblr-modal-width: 1560px;" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="dlgStreamItem_title" class="modal-title">Add Stream Items</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body" style="min-height: 20rem; max-height: 40rem;">
+        <!-- Form Stream Items -->
+        <div class="container-xl">
+          <div class="row">
+            <!-- input area -->
+            <div class="col-6">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_Code" class="form-label required">Code</label>
+                    <input id="dlgStreamItem_Code" class="form-control"
+                        type="text" placeholder="code"
+                        name="dlgStreamItem_Code" value="">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_Name" class="form-label required">Name</label>
+                    <input id="dlgStreamItem_Name" class="form-control"
+                        type="text" placeholder="name"
+                        name="dlgStreamItem_Name" value="">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_State" class="form-label required">State</label>
+                    <select id="dlgStreamItem_State" class="form-select"
+                        name="dlgStreamItem_State">
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_Note" class="form-label">Note</label>
+                    <input id="dlgStreamItem_Note" class="form-control"
+                        type="text" placeholder="note"
+                        name="dlgStreamItem_Note" value="">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_SourceType" class="form-label required">Source Type</label>
+                    <select id="dlgStreamItem_SourceType" class="form-select"
+                        name="dlgStreamItem_SourceType">
+                      <option value="mod_device">Device</option>
+                      <option value="file" >File</option>
+                      <option value="external" >External</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" id="dlgStreamItem_subSourceTpeRow" style="display: none;">
+                <div class="col-8" id="dlgStreamItem_ExternalURLContainer">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_ExternalURL" class="form-label required">External URL</label>
+                    <input id="dlgStreamItem_ExternalURL" class="form-control"
+                        type="text" placeholder="external url"
+                        name="dlgStreamItem_ExternalURL" value="">
+                  </div>
+                </div>
+    
+                <div class="col-8" id="dlgStreamItem_FilepathContainer">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_Filepath" class="form-label required">Filepath</label>
+                    <input id="dlgStreamItem_Filepath" class="form-control"
+                        type="text" placeholder="filepath"
+                        name="dlgStreamItem_Filepath" value="">
+                  </div>
+                </div>
+    
+                <div class="col-4" id="dlgStreamItem_DeviceCodeContainer">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_DeviceCode" class="form-label required">Device Code</label>
+                    <input id="dlgStreamItem_DeviceCode" class="form-control"
+                        type="text" placeholder="device code"
+                        name="dlgStreamItem_DeviceCode" value="">
+                  </div>
+                </div>
+    
+                <div class="col-2" id="dlgStreamItem_DeviceChannelIDContainer">
+                  <div class="mb-3">
+                    <label for="dlgStreamItem_DeviceChannelID" class="form-label required">Channel ID</label>
+                    <input id="dlgStreamItem_DeviceChannelID" class="form-control"
+                        type="text" placeholder="channel id"
+                        name="dlgStreamItem_DeviceChannelID" value="">
+                  </div>
+                </div>
+
+                <div id="dcpContainer" class="col-2">
+                  <button id="dcpButton" class="btn btn-icon">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- preview -->
+            <div class="col-6">
+              <div id="dcpVideoContainer" class="card">
+                <div class="card-header py-2">
+                  <h3 class="card-title">Device Channel Preview</h3>
+                </div>
+                <div class="card-body py-2">
+                  <!-- TODO: use component fu-default-live-stream -->
+                  <div id="dcpPreviewFeedback" class="row"></div>
+                  <div class="row">
+                    <video id="dcpVideo" width="640" height="360" muted>
+                      <source src="" type="application/x-mpegURL">
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="ms-auto">
+          <button class="btn btn-primary" id="btnSaveStreamItem"
+              title="Save" data-bs-toggle="tooltip" data-bs-placement="top">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input id="dlgStreamItem_StreamGroupID" type="hidden" value="{{ $._data.stream_group.ID }}" data-fu-layout-idx="">
+  <input id="dlgStreamItem_ID" type="hidden" value="" data-fu-layout-idx="">
+</div>
