@@ -1,0 +1,88 @@
+something:
+  placeholder: ph
+
+module_device:
+  cfgdef: 1
+  execute: yes # yes | no
+
+  device:
+    mode: add # none | add | edit | add_or_edit | delete
+    devices:
+    - code: device001
+      name: device001_name
+      state: active
+      note: device001_note
+      protocol: http
+      hostname: 192.168.2.196
+      port: 80
+      username: asdasd
+      password: jejeje
+      brand: hikvision
+      fallback_rtsp_port: 554
+
+module_stream:
+  cfgdef: 1
+  execute: yes # yes | no
+
+  stream_profile:
+    mode: add # none | add | edit | add_or_edit | delete
+    profiles:
+    - code: streamprofile001
+      name: streamprofile001_name
+      state: active
+      note: streamprofile001_note
+      target_video_codec: h264
+      target_video_compression: 80
+      target_video_bitrate: 250000 # in bit/s
+      target_audio_codec: aac
+      target_audio_compression: 80
+      target_audio_bitrate: 32000 # in bit/s
+
+  stream_group:
+    mode: add # none | add | edit | add_or_edit | delete
+    groups:
+    - code: streamgroup001
+      name: streamgroup001_name
+      state: active
+      note: streamgroup001_note
+      stream_profile_code: streamprofile001
+      items:
+      - code: streamgroup001_item01
+        name: item01_name
+        state: active
+        note: item01_note
+        source_type: file # 'mod_device' | external | file | embedded_file
+        device_code: device001
+        device_channel_id: 1
+        external_url: rtsp://user:pass@hostname:port/a/b/c
+        filepath: mock/vid/bbt.mp4 # relpath | abspath
+        embedded_filepath:
+
+module_wall:
+  cfgdef: 1
+  execute: yes # yes | no
+
+  wall:
+    mode: add # none | add | edit | add_or_edit | delete
+    walls:
+    - code: wall001
+      name: wall001_name
+      state: active
+      note: wall001_note
+      wall_layout_code: DEFAULT_4
+      items:
+      - index: 1
+        source_node: node001
+        stream_code: streamgroup001_item01
+      - index: 3
+        source_node: node001
+        stream_code: streamgroup001_item01
+    - code: wall002
+      name: wall002_name
+      state: active
+      note: wall002_note
+      wall_layout_code: DEFAULT_16
+      items:
+      - index: 2
+        source_node: node001
+        stream_code: streamgroup001_item01
